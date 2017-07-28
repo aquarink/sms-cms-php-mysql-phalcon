@@ -49,16 +49,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  {{pic}}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -381,8 +381,8 @@
                                                 <td style="text-align: center">{{ d['id_app'] }}</td>
                                                 <td style="text-align: center">{{ d['keyword_create'] }}</td>
                                                 <td style="text-align: center">{{ d['keyword_status'] }}</td>
-                                                <td style="text-align: center"><a href="{{ config.base_url }}report/editkeyword?id={{ d['id_keyword'] }}">EDIT</a></td>
-                                                <td style="text-align: center"><a href="deletekey/{{ d['id_keyword'] }}">DELETE</a></td>
+                                                <td style="text-align: center"><a href="{{ config.base_url }}report/editkeyword?id={{ d['id_keyword'] }}"><i class="fa fa-pencil"></a></td>
+                                                <td style="text-align: center"><a href="deletekey/{{ d['id_keyword'] }}"><i class="fa fa-trash"></a></td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
@@ -459,7 +459,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">

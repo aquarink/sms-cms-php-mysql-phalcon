@@ -44,16 +44,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -340,6 +340,14 @@
                                     <form class="form-horizontal" method="post" action="">
                                         <div class="box-body">
                                             <div class="form-group">
+                                                <label class="col-sm-2">Nama / PIC</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="nama" placeholder="Name of PIC">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
                                                 <label class="col-sm-2">Username</label>
 
                                                 <div class="col-sm-10">
@@ -369,7 +377,7 @@
                                                                                         </div>-->
 
                                             <div class="form-group">
-                                                <label class="col-sm-2">Akses</label>
+                                                <label class="col-sm-2">Accessable Page</label>
 
                                                 <div class="col-sm-10">
                                                     <div class="col-md-3">
@@ -467,7 +475,7 @@
 
 
                                             <div class="col-md-offset-2">
-                                                <button type="submit" class="btn btn-info" style="margin-left:5px;">Register</button>
+                                                <button type="submit" class="btn btn-success" style="margin-left:5px;">Register</button>
                                                 <button type="reset" class="btn btn-info" style="margin-left:5px;">Cancel</button>
                                             </div>
                                         </div>

@@ -2,18 +2,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MO Incoming Log</title>
+        <title>Keyword</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
         <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/bootstrap/css/bootstrap.min.css">
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/skins/_all-skins.min.css">
-
         <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/iCheck/all.css">
         <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.css">
         <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datepicker/datepicker3.css">
@@ -22,12 +18,14 @@
             label{
                 text-align: center;
             }
+            th{
+                background-color: #4183D7;
+                color: #fff;
+            }
         </style>
-
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
-
         <div class="wrapper">
 
             <header class="main-header">
@@ -51,16 +49,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -98,12 +96,12 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
-                                <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
+                                <li class="active"><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
                                 <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
                                 <li><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
                                 <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
                                 <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
-                                <li class="active"><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
+                                <li><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
                                 <li><a href="mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
                                 <li><a href="dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
                                 <li><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
@@ -327,179 +325,174 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        MO Incoming Log
-                    </h1>
+                    <h1>KEYWORD</h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <!-- Main row -->
                     <div class="row">
-
                         <div class="col-md-12">
                             <!-- AREA CHART -->
                             <div class="box box-primary">
                                 <div class="box-body">
-
                                     <form class="form-horizontal">
-
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">MO Origin</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control"  placeholder="MO Origin">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">MSISDN</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="MSISDN">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TELCO</label>
-
-                                            <div class="col-sm-5">
-                                                <select class="form-control">
-                                                    <option>All</option>
-                                                    <option>Telkomsel</option>
-                                                    <option>Indosat</option>
-                                                    <option>XL</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">SHORTCODE</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="SHORTCODE">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TRX ID</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="TRX ID">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">SESSION ID</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="SESSION ID">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">DATE</label>
-
-                                            <div class="col-sm-5">
-                                                <!-- Date -->
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>Keyword Like</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <div class="input-group input-group-sm">
+                                                            <input type="text" class="form-control">
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-info btn-flat">Go!</button>
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="Date">
-                                                </div>
-                                                <!-- /.input group -->
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">LIMIT</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="LIMIT">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TIME</label>
-
-                                            <div class="col-sm-5">
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option>Januari</option>
-                                                        <option>Februari</option>
-                                                        <option>Maret</option>
-                                                        <option>April</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option>2015</option>
-                                                        <option>2016</option>
-                                                        <option>2017</option>
-                                                        <option>2018</option>
-                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="col-md-5 col-md-offset-4">
-                                            <button type="submit" class="btn btn-info">SUBMIT</button>
-                                        </div>
-
-
-                                        <!-- /.box-body -->
                                     </form>
-
                                 </div>
                                 <!-- /.box-body -->
-
 
                                 <div class="box-body" style="overflow-x:auto">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MO Origin</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MSISDN</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">PREPAID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SMS</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">TELCO</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SHORTCODE</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">TRX ID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SESSION ID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">DATETIME</th>
+                                                <th style="text-align: center">KEYWORD</th>
+                                                <th style="text-align: center">TELCO</th>
+                                                <th style="text-align: center">SHORTCODE</th>
+                                                <th style="text-align: center">APPID</th>
+                                                <th style="text-align: center">ENTRY DATE</th>
+                                                <th style="text-align: center">STATUS</th>
+                                                <th style="text-align: center">EDIT</th>
+                                                <th style="text-align: center">DELETE</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
                                             <?php foreach ($data as $d) { ?>
                                             <tr>
-                                                <td style="text-align: center">sms</td>
-                                                <td style="text-align: center"><?= $d['msisdn'] ?></td>
-                                                <td style="text-align: center">20</td>
-                                                <td><?= $d['sms_field'] ?></td>
+                                                <td style="text-align: center"><?= $d['keyword'] ?></td>
                                                 <td style="text-align: center"><?= $d['telco'] ?></td>
                                                 <td style="text-align: center"><?= $d['shortcode'] ?></td>
-                                                <td style="text-align: center"><?= $d['trx_id'] ?></td>
-                                                <td style="text-align: center"><a href=""><?= $d['session_id'] ?></a></td>
-                                                <td style="text-align: center"><?= $d['trx_date'] ?></td>
+                                                <td style="text-align: center"><?= $d['id_app'] ?></td>
+                                                <td style="text-align: center"><?= $d['keyword_create'] ?></td>
+                                                <td style="text-align: center"><?= $d['keyword_status'] ?></td>
+                                                <td style="text-align: center"><a href="<?= $this->config->base_url ?>report/editkeyword?id=<?= $d['id_keyword'] ?>"><i class="fa fa-pencil"></a></td>
+                                                <td style="text-align: center"><a href="deletekey/<?= $d['id_keyword'] ?>"><i class="fa fa-trash"></a></td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <!--body box-->
                             </div>
-                            <!-- /.box -->
-                        </div>
-                        <!-- /.col md 12 -->
+                            <!-- box box-primary -->
 
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <h3>ADD KEYWORD</h3>
+                                    <form class="form-horizontal" style="margin-top:25px;" method="post">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>KEYWORD</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" name="keyword"  placeholder="KEYWORD">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>TELCO</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="telco">
+                                                            <option value="tsel">Telkomsel</option>
+                                                            <option value="xl">XL</option>
+                                                            <option value="isat">Indosat</option>
+                                                            <option value="hutch">Hutch</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>SHORTCODE</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="shortcode">
+                                                            <option value="95000">95000</option>
+                                                            <option value="96000">96000</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>APPID</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="id_app">
+                                                            <?php foreach ($dataApp as $a) { ?>
+                                                            <option value="<?= $a['id_app'] ?>"><?= $a['id_app'] ?> - <?= $a['app_desc'] ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>STATUS</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="keyword_status">
+                                                            <option value="1">Aktif</option>
+                                                            <option value="2">Non Aktif</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="col-md-2 col-lg-offset-2">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="reset" class="btn btn-primary">Reset</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.row (main row) -->
+                    <!-- /.row -->
 
                 </section>
                 <!-- /.content -->
+
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -517,7 +510,7 @@
         <script src="<?php echo $this->config->base_url; ?>public/plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-$.widget.bridge('uibutton', $.ui.button);
+            $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="<?php echo $this->config->base_url; ?>public/bootstrap/js/bootstrap.min.js"></script>
@@ -537,18 +530,19 @@ $.widget.bridge('uibutton', $.ui.button);
         <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
         <script src="<?php echo $this->config->base_url; ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
+        <!-- CK Editor -->
+        <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+        <script src="https://code.highcharts.com/highcharts.src.js"></script>
         <script>
             $(function () {
                 $('#datepicker').datepicker({
                     autoclose: true
                 });
             });
-        </script>
-        <script>
             $(function () {
                 $("#example1").DataTable();
                 $('#example2').DataTable({
-                    "paging": false,
+                    "paging": true,
                     "lengthChange": false,
                     "searching": false,
                     "ordering": false,

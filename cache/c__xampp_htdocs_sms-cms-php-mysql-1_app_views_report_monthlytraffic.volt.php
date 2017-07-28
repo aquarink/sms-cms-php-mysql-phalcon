@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Daily Traffic</title>
+        <title>Monthly Traffic</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -23,9 +23,6 @@
                 color: #fff;
                 text-align: center;
             }
-            td{
-                text-align: center;
-            }
             #container {
                 max-width: 1000px;
                 height: 400px;
@@ -33,7 +30,6 @@
                 margin-top: 35px;
             }
         </style>
-
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
@@ -60,16 +56,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -118,8 +114,8 @@
                                 <li><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
                                 <li><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
                                 <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
-                                <li class="active"><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
-                                <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
+                                <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
+                                <li class="active"><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
                                 <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
                                 <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
                                 <li><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
@@ -336,7 +332,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>Daily Traffic</h1>
+                    <h1>Monthly Traffic</h1>
                 </section>
 
                 <!-- Main content -->
@@ -344,25 +340,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <!-- AREA CHART -->
-                            <div class="box box-primary" style="padding-bottom:20px;">
+                            <div class="box box-primary">
                                 <div class="box-body">
                                     <form class="form-horizontal">
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <label>BULAN</label>
+                                                    <label>TAHUN</label>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>Januari</option>
-                                                            <option>Februari</option>
-                                                            <option>Maret</option>
-                                                            <option>April</option>
-                                                        </select>
-                                                    </div>
-
                                                     <div class="col-md-4">
                                                         <select class="form-control">
                                                             <option>2015</option>
@@ -383,6 +370,7 @@
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
                                                         <select class="form-control">
+                                                            <option>All</option>
                                                             <option>97979</option>
                                                             <option>99999</option>
                                                             <option>11111</option>
@@ -401,6 +389,7 @@
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
                                                         <select class="form-control">
+                                                            <option>All</option>
                                                             <option>TELKOMSEL</option>
                                                             <option>INDOSAT</option>
                                                             <option>XL</option>
@@ -419,37 +408,38 @@
                                                 <div class="col-md-10">
                                                     <div class="col-md-12">
                                                         <div class="col-md-4" style="margin-left:-20px;margin-bottom: 10px;">
-                                                            <input id="checkAll" type="button" value="Check/Uncheck All " class="btn btn-primary">
+                                                            <button type="submit" class="btn btn-primary">Check All</button>
+                                                            <button type="submit" class="btn btn-primary">Uncheck All</button>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal">
+                                                        <input type="checkbox" class="minimal" checked>
                                                         <label>REG BOLA</label>
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal">
+                                                        <input type="checkbox" class="minimal" checked>
                                                         <label>REG BOLA</label>
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal">
+                                                        <input type="checkbox" class="minimal" checked>
                                                         <label>REG BOLA</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal">
+                                                        <input type="checkbox" class="minimal" checked>
                                                         <label>REG BOLA</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal">
+                                                        <input type="checkbox" class="minimal" checked>
                                                         <label>REG BOLA</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal">
+                                                        <input type="checkbox" class="minimal" checked>
                                                         <label>REG BOLA</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal">
+                                                        <input type="checkbox" class="minimal" checked>
                                                         <label>REG BOLA</label>
                                                     </div>
                                                 </div>
@@ -467,7 +457,7 @@
 
                                 <div class="box-body">
                                     <p style="color:#446CB3">
-                                        DAILY TRAFFIC -- : [ Bulan : 05 , Tahun : 2017 ] [ SHORTCODE : All ] [ TELCO : All ] [ Service : All ]
+                                        MONTHLY TRAFFIC -- : [ Tahun : 2017 ] [ SHORTCODE : All ] [ TELCO : All ] [ Service : All ]
                                     </p>
                                 </div>
 
@@ -475,15 +465,15 @@
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Tanggal</th>
-                                                <th>Total</th>
-                                                <th>Projection</th>
-                                                <th>6</th>
-                                                <th>5</th>
-                                                <th>4</th>
-                                                <th>3</th>
-                                                <th>2</th>
-                                                <th>1</th>
+                                                <th style="text-align: center">Bulan</th>
+                                                <th style="text-align: center">This Year Running</th>
+                                                <th style="text-align: center">Januari</th>
+                                                <th style="text-align: center">Februari</th>
+                                                <th style="text-align: center">Maret</th>
+                                                <th style="text-align: center">April</th>
+                                                <th style="text-align: center">Mei</th>
+                                                <th style="text-align: center">Juni</th>
+                                                <th style="text-align: center">Juli</th>
                                             </tr>
                                         </thead>
 
@@ -491,31 +481,7 @@
                                             <tr>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MO</td>
                                                 <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
                                                 <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MO REG</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MO UNREG</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
@@ -527,7 +493,7 @@
                                             <tr>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MT DELIVERED</td>
                                                 <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
+                                                <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
@@ -539,7 +505,7 @@
                                             <tr>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MT REJECTED</td>
                                                 <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
+                                                <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
@@ -551,31 +517,19 @@
                                             <tr>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MT TOTAL</td>
                                                 <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
                                                 <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">PRESENTAGE</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">&nbsp;</td>
-                                                <td>1%</td>
-                                                <td>1%</td>
-                                                <td>1%</td>
-                                                <td>1%</td>
-                                                <td>1%</td>
-                                                <td>1%</td>
+                                                <td>131.245</td>
                                             </tr>
 
                                             <tr>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">GROSS REV</td>
                                                 <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">4.787.898</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4.787.898</td>
                                                 <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
                                                 <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
                                                 <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
@@ -587,7 +541,7 @@
                                             <tr>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">NET REV</td>
                                                 <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">1.487.787</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">1.487.787</td>
                                                 <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
                                                 <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
                                                 <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
@@ -603,130 +557,61 @@
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Tanggal</th>
+                                                <th>Bulan</th>
                                                 <th>MO</th>
                                                 <th>MO REG</th>
                                                 <th>MO UNREG</th>
                                                 <th>MT DELIVERED</th>
                                                 <th>MT REJECTED</th>
                                                 <th>TOTAL MT</th>
-                                                <th>PRESENTAGE</th>
+                                                <!--<th>PRESENTAGE</th>-->
                                                 <th>GROSS REV</th>
                                                 <th>NET REV</th>
                                             </tr>
                                         </thead>
                                         
                                         <tbody>
-                                            <?php 
-                                            foreach($data as $key => $val){ ?>
                                             <tr>
-                                                <td>
-                                                    <?php 
-                                                    $keyArr[] = $key;
-                                                    echo $key; 
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if($data[$key]['PULL_total'] == true){
-                                                        $mo = $data[$key]['PULL_total'];
-                                                    } else{
-                                                        $mo= 0;
-                                                    }
-                                                    $moArr[] = $mo;
-                                                    echo $mo;
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if($data[$key]['REG;_total'] == true){
-                                                        $moReg = $data[$key]['REG;_total'];
-                                                    } else{
-                                                        $moReg= 0;
-                                                    }
-                                                    $moRegArr[] = $moReg;
-                                                    echo $moReg;
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if($data[$key]['UNRE_total'] == true){
-                                                        $moUnreg = $data[$key]['UNRE_total'];
-                                                    } else{
-                                                        $moUnreg= 0;
-                                                    }
-                                                    $moUnregArr[] = $moUnreg;
-                                                    echo $moUnreg;
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if($data[$key]['push']['delivered'] == true){
-                                                        $mtDeliv = $data[$key]['push']['delivered'];
-                                                    } else{
-                                                        $mtDeliv= 0;
-                                                    }
-                                                    $mtDelivArr[] = $mtDeliv;
-                                                    echo $mtDeliv;
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if($data[$key]['push']['rejected'] == true){
-                                                        $mtReject = $data[$key]['push']['rejected'];
-                                                    } else{
-                                                        $mtReject= 0;
-                                                    }
-                                                    $mtRejectArr[] = $mtReject;
-                                                    echo $mtReject;
-                                                    ?>
-                                                </td>
-                                                <td>
-                                                    <?php 
-                                                    $totalMTTanggal = $mtDeliv + $mtReject; 
-                                                    $totalMTTanggalArr[] = $totalMTTanggal;
-                                                    echo $totalMTTanggal;
-                                                    ?>
-                                                </td>
-                                                <td>
-						    <?php 
-                                                    $persen = ($mtDeliv*100)/$totalMTTanggal;
-                                                    echo number_format($persen) .' %';
-                                                    ?>
-						</td>
+                                                <td>Januari</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>3</td>
+                                                <!--<td>1%</td>-->
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">30000</td>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">10000</td>
                                             </tr>
-                                            <?php } ?>
                                             <tr>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">Total</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
-                                                    <?php echo array_sum($moArr); ?>
-                                                </td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
-                                                    <?php echo array_sum($moRegArr); ?>
-                                                </td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
-                                                    <?php echo array_sum($moUnregArr); ?>
-                                                </td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
-                                                    <?php echo array_sum($mtDelivArr); ?>
-                                                </td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
-                                                    <?php echo array_sum($mtRejectArr); ?>
-                                                </td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
-                                                    <?php echo array_sum($totalMTTanggalArr); ?>
-                                                </td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;"></td>
+                                                <td>Februari</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>3</td>
+                                                <!--<td>1%</td>-->
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">30000</td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">10000</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">This Year Running</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">2</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">6</td>
+                                                <!--<td style="background-color:rgba(129, 207, 224,0.7);color: #000;"></td>-->
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">60000</td>
                                                 <td style="background-color:rgba(68,108,179,0.7);color: #fff;">20000</td>
                                             </tr>
-                                        </tbody>                                    </table>
+                                        </tbody>
+                                    </table>
                                 </div>
 
                                 <div id="container"></div>
-
                             </div>
                             <!-- /.box -->
                         </div>
@@ -739,7 +624,8 @@
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-                <strong>Copyright &copy; 2017 Mobiwin.</strong> All rights reserved.
+                <strong>Copyright &copy; 2017 Mobiwin.</strong> All rights
+                reserved.
             </footer>
 
 
@@ -766,6 +652,7 @@
         <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
         <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -774,35 +661,13 @@
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
-
         <script>
-            $(document).ready(function () {
-                // Below code is used to remove all check property if,
-                // User select/unselect options with class first options.
-                $(".first").click(function () {
-                    $("#checkAll").attr("data-type", "uncheck");
+            $(function () {
+                $('#datepicker').datepicker({
+                    autoclose: true
                 });
-                // Below code is used to remove all check property if,
-                // User select/unselect options with name=option2 options.
-                $("input[name=option2]").click(function () {
-                    $("#selectall").prop("checked", false);
-                });
-                /////////////////////////////////////////////////////////////
-                // JS for Check/Uncheck all CheckBoxes by Button //
-                /////////////////////////////////////////////////////////////
-                $("#checkAll").attr("data-type", "check");
-                $("#checkAll").click(function () {
-                    if ($("#checkAll").attr("data-type") === "check") {
-                        $(".first").prop("checked", true);
-                        $("#checkAll").attr("data-type", "uncheck");
-                    } else {
-                        $(".first").prop("checked", false);
-                        $("#checkAll").attr("data-type", "check");
-                    }
-                })
             });
         </script>
-
         <script>
             Highcharts.chart('container', {
                 colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
@@ -822,17 +687,13 @@
                 },
                 title: {
                     style: {
-                        color: '#E0E0E3',
-                        textTransform: 'uppercase',
-                        fontSize: '20px'
+                        color: '#E0E0E3'
                     },
                     text: 'Grafik Monthly Traffic Net Revenue'
                 },
-
                 subtitle: {
                     text: ''
                 },
-
                 yAxis: {
                     gridLineColor: '#707073',
                     labels: {
@@ -854,11 +715,13 @@
                     }
                 },
                 legend: {
+                    itemStyle: {
+                        color: '#E0E0E3'
+                    },
                     layout: 'vertical',
                     align: 'right',
                     verticalAlign: 'middle'
                 },
-
                 xAxis: {
                     gridLineColor: '#707073',
                     labels: {
@@ -870,21 +733,22 @@
                     minorGridLineColor: '#505053',
                     tickColor: '#707073',
                     title: {
-                        text: 'Tanggal',
+                        text: 'Bulan',
                         style: {
                             color: '#fff'
 
                         }
                     },
-			categories: [<?php echo join($keyArr, ','); ?>]
-                },
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+                },
                 series: [{
                         showInLegend: false,
-                        data: [<?php echo join($totalMTTanggalArr, ','); ?>]
+                        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434, 12]
                     }]
 
             });
         </script>
+
     </body>
 </html>

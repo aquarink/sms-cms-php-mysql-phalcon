@@ -2,17 +2,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Keyword</title>
+        <title>Reg Keyword</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/iCheck/all.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datepicker/datepicker3.css">
+        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="../plugins/iCheck/all.css">
+        <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
             label{
@@ -23,6 +23,7 @@
                 color: #fff;
             }
         </style>
+
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
@@ -49,16 +50,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -96,8 +97,8 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
-                                <li class="active"><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
-                                <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
+                                <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
+                                <li class="active"><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
                                 <li><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
                                 <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
                                 <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
@@ -325,7 +326,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>KEYWORD</h1>
+                    <h1>REG KEYWORD</h1>
                 </section>
 
                 <!-- Main content -->
@@ -366,25 +367,39 @@
                                                 <th style="text-align: center">SHORTCODE</th>
                                                 <th style="text-align: center">APPID</th>
                                                 <th style="text-align: center">ENTRY DATE</th>
-                                                <th style="text-align: center">STATUS</th>
                                                 <th style="text-align: center">EDIT</th>
                                                 <th style="text-align: center">DELETE</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            <?php foreach ($data as $d) { ?>
                                             <tr>
-                                                <td style="text-align: center"><?= $d['keyword'] ?></td>
-                                                <td style="text-align: center"><?= $d['telco'] ?></td>
-                                                <td style="text-align: center"><?= $d['shortcode'] ?></td>
-                                                <td style="text-align: center"><?= $d['id_app'] ?></td>
-                                                <td style="text-align: center"><?= $d['keyword_create'] ?></td>
-                                                <td style="text-align: center"><?= $d['keyword_status'] ?></td>
-                                                <td style="text-align: center"><a href="<?= $this->config->base_url ?>report/editkeyword?id=<?= $d['id_keyword'] ?>">EDIT</a></td>
-                                                <td style="text-align: center"><a href="deletekey/<?= $d['id_keyword'] ?>">DELETE</a></td>
+                                                <td style="text-align: center">hangout</td>
+                                                <td style="text-align: center">xl</td>
+                                                <td style="text-align: center">95000</td>
+                                                <td style="text-align: center">10019</td>
+                                                <td style="text-align: center">2017-06-02 22:47:59</td>
+                                                <td style="text-align: center"><a href="">EDIT</a></td>
+                                                <td style="text-align: center"><a href="">DELETE</a></td>
                                             </tr>
-                                            <?php } ?>
+                                            <tr>
+                                                <td style="text-align: center">hangout</td>
+                                                <td style="text-align: center">xl</td>
+                                                <td style="text-align: center">95000</td>
+                                                <td style="text-align: center">10019</td>
+                                                <td style="text-align: center">2017-06-02 22:47:59</td>
+                                                <td style="text-align: center"><a href="">EDIT</a></td>
+                                                <td style="text-align: center"><a href="">DELETE</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center">hangout</td>
+                                                <td style="text-align: center">xl</td>
+                                                <td style="text-align: center">95000</td>
+                                                <td style="text-align: center">10019</td>
+                                                <td style="text-align: center">2017-06-02 22:47:59</td>
+                                                <td style="text-align: center"><a href=""><i class="fa fa-pencil"></i></a></td>
+                                                <td style="text-align: center"><a href=""><i class="fa fa-trash"></i></a></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -395,7 +410,7 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <h3>ADD KEYWORD</h3>
-                                    <form class="form-horizontal" style="margin-top:25px;" method="post">
+                                    <form class="form-horizontal" style="margin-top:25px;">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
@@ -403,7 +418,7 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <input type="text" class="form-control" name="keyword"  placeholder="KEYWORD">
+                                                        <input type="text" class="form-control"  placeholder="KEYWORD">
                                                     </div>
                                                 </div>
                                             </div>
@@ -416,11 +431,9 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <select class="form-control" name="telco">
-                                                            <option value="tsel">Telkomsel</option>
-                                                            <option value="xl">XL</option>
-                                                            <option value="isat">Indosat</option>
-                                                            <option value="hutch">Hutch</option>
+                                                        <select class="form-control">
+                                                            <option>TELKOMSEL</option>
+                                                            <option>XL</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -434,9 +447,9 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <select class="form-control" name="shortcode">
-                                                            <option value="95000">95000</option>
-                                                            <option value="96000">96000</option>
+                                                        <select class="form-control">
+                                                            <option>95000</option>
+                                                            <option>94878</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -450,26 +463,9 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <select class="form-control" name="id_app">
-                                                            <?php foreach ($dataApp as $a) { ?>
-                                                            <option value="<?= $a['id_app'] ?>"><?= $a['id_app'] ?> - <?= $a['app_desc'] ?></option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>STATUS</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" name="keyword_status">
-                                                            <option value="1">Aktif</option>
-                                                            <option value="2">Non Aktif</option>
+                                                        <select class="form-control">
+                                                            <option>10013</option>
+                                                            <option>10100</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -505,31 +501,31 @@
         <!-- ./wrapper -->
 
         <!-- jQuery 3.1.1 -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
+        <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="<?php echo $this->config->base_url; ?>public/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
         <!-- Morris.js charts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <!-- daterangepicker -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <!-- Slimscroll -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/fastclick/fastclick.js"></script>
+        <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="<?php echo $this->config->base_url; ?>public/dist/js/adminlte.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/iCheck/icheck.min.js"></script>
+        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
+        <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
@@ -545,7 +541,7 @@
                     "paging": true,
                     "lengthChange": false,
                     "searching": false,
-                    "ordering": false,
+                    "ordering": true,
                     "info": true,
                     "autoWidth": false
                 });

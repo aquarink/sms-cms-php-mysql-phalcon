@@ -54,16 +54,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  {{pic}}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -469,7 +469,7 @@
                                         <tbody>
                                             {% for d in data %}
                                             <tr>
-                                                <td><a href="">{{ d['msisdn'] }}</a></td>
+                                                <td><a data-toggle="modal" data-target="#view-modal" href="" onclick="getData({{ d['msisdn'] }})">{{ d['msisdn'] }}</a></td>
                                                 <td>{{ d['telco'] }}</td>
                                                 <td>{{ d['shortcode'] }}</td>
                                                 <td>{{ d['trx_id'] }}</td>
@@ -480,6 +480,35 @@
                                             {% endfor %}
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <div id="view-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog modal-lg" style="width:100%"> 
+                                        <div class="modal-content">  
+
+                                            <div class="modal-header"> 
+                                                <h4 class="modal-title">
+                                                    <i class="glyphicon glyphicon-dashboard"></i> Session ID Data
+                                                </h4> 
+                                            </div> 
+
+                                            <div class="modal-body">                     
+                                                <div id="modal-loader" style="display: none; text-align: center;">
+                                                    <!-- ajax loader -->
+                                                    <h1>Loading</h1>
+                                                </div>
+
+                                                <table id="dynamic-content" class="table table-responsive table-bordered" style="font-size:12px">
+
+                                                </table>
+                                            </div> 
+
+                                            <div class="modal-footer"> 
+                                                <button onclick="clearData()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                                            </div> 
+
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.box -->
@@ -501,14 +530,14 @@
 
         </div>
         <!-- ./wrapper -->
-        
+
         <!-- jQuery 3.1.1 -->
         <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 
         <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+                                    $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -532,22 +561,33 @@
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
 
         <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
+                                    $(function () {
+                                        $('#datepicker').datepicker({
+                                            autoclose: true
+                                        });
+                                    });
+                                    $(function () {
+                                        $("#example1").DataTable();
+                                        $('#example2').DataTable({
+                                            "paging": false,
+                                            "lengthChange": false,
+                                            "searching": false,
+                                            "ordering": false,
+                                            "info": true,
+                                            "autoWidth": false
+                                        });
+                                    });
+        </script>
+        <script>
+            function getData(sessId) {
+                $.get("http://localhost/sms-cms-php-mysql-1/user/pushbymsisdn?id=" + sessId, function (data, status) {
+                    $('#dynamic-content').append(data);
                 });
-            });
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": false,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false
-                });
-            });
+            }
+
+            function clearData() {
+                $('#dynamic-content').empty();
+            }
         </script>
     </body>
 </html>

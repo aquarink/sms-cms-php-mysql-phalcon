@@ -38,5 +38,6 @@ return new \Phalcon\Config([
         // possibly if the web server rewrite rules are changed. This can also be set to a static path.
         'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
     ],
-    'base_url' => 'http://122.248.32.27:4000/cms2/'
+//    'base_url' => 'http://122.248.32.27:4000/cms2/'
+    'base_url' => 'http://localhost/sms-cms-php-mysql-1/'
 ]);

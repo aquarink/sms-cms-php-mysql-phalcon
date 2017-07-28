@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Monthly Traffic</title>
+        <title>Profit Loss</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -23,16 +23,14 @@
                 color: #fff;
                 text-align: center;
             }
-            #container {
-                max-width: 1000px;
-                height: 400px;
-                margin: 0 auto;
-                margin-top: 35px;
+            td{
+                text-align: center;
             }
         </style>
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
+
         <div class="wrapper">
 
             <header class="main-header">
@@ -56,16 +54,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -115,10 +113,10 @@
                                 <li><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
                                 <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
                                 <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
-                                <li class="active"><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
+                                <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
                                 <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
                                 <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
-                                <li><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
+                                <li class="active"><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
                                 <li><a href="pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
                             </ul>
                         </li>
@@ -332,7 +330,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>Monthly Traffic</h1>
+                    <h1>Profit Loss</h1>
                 </section>
 
                 <!-- Main content -->
@@ -343,24 +341,6 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <form class="form-horizontal">
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>TAHUN</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>2015</option>
-                                                            <option>2016</option>
-                                                            <option>2017</option>
-                                                            <option>2018</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -406,41 +386,12 @@
                                                     <label>SERVICE</label>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <div class="col-md-12">
-                                                        <div class="col-md-4" style="margin-left:-20px;margin-bottom: 10px;">
-                                                            <button type="submit" class="btn btn-primary">Check All</button>
-                                                            <button type="submit" class="btn btn-primary">Uncheck All</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal" checked>
-                                                        <label>REG BOLA</label>
-                                                    </div>
-
-                                                    <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal" checked>
-                                                        <label>REG BOLA</label>
-                                                    </div>
-
-                                                    <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal" checked>
-                                                        <label>REG BOLA</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal" checked>
-                                                        <label>REG BOLA</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal" checked>
-                                                        <label>REG BOLA</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal" checked>
-                                                        <label>REG BOLA</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="checkbox" class="minimal" checked>
-                                                        <label>REG BOLA</label>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>Reg Bola</option>
+                                                            <option>Reg Masak</option>
+                                                            <option>Reg Reg</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -454,164 +405,40 @@
                                     </form>
                                 </div>
                                 <!-- /.box-body -->
-
+                                Note* = Jika form disubmit maka muncul tabel di bawah
                                 <div class="box-body">
                                     <p style="color:#446CB3">
-                                        MONTHLY TRAFFIC -- : [ Tahun : 2017 ] [ SHORTCODE : All ] [ TELCO : All ] [ Service : All ]
+                                        PROFIT LOSS -- : [ SHORTCODE : All ] [ TELCO : All ] [ Service : REG BOLA ]
                                     </p>
                                 </div>
-
-<!--                                <div class="box-body" style="overflow-x:auto">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th style="text-align: center">Bulan</th>
-                                                <th style="text-align: center">This Year Running</th>
-                                                <th style="text-align: center">Januari</th>
-                                                <th style="text-align: center">Februari</th>
-                                                <th style="text-align: center">Maret</th>
-                                                <th style="text-align: center">April</th>
-                                                <th style="text-align: center">Mei</th>
-                                                <th style="text-align: center">Juni</th>
-                                                <th style="text-align: center">Juli</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MO</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MT DELIVERED</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MT REJECTED</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">MT TOTAL</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">GROSS REV</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4.787.898</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">NET REV</td>
-                                                <td style="background-color:rgba(108, 122, 137,0.7);color: #fff;">187.447</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">1.487.787</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">131.245</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>-->
 
                                 <div class="box-body" style="overflow-x:auto">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Bulan</th>
-                                                <th>MO</th>
-                                                <th>MO REG</th>
-                                                <th>MO UNREG</th>
-                                                <th>MT DELIVERED</th>
-                                                <th>MT REJECTED</th>
-                                                <th>TOTAL MT</th>
-                                                <!--<th>PRESENTAGE</th>-->
-                                                <th>GROSS REV</th>
-                                                <th>NET REV</th>
+                                                <th>APPID</th>
+                                                <th>DESCRIPTION</th>
+                                                <th>SHORTCODE</th>
+                                                <th>TELCO</th>
+                                                <th>TOTAL NET REVENUE</th>
+                                                <th>TOTAL COST</th>
+                                                <th>PROFIT/LOSS</th>
                                             </tr>
                                         </thead>
-                                        
+
                                         <tbody>
                                             <tr>
-                                                <td>Januari</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>1</td>
-                                                <td>3</td>
-                                                <!--<td>1%</td>-->
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">30000</td>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">10000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Februari</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>2</td>
-                                                <td>1</td>
-                                                <td>3</td>
-                                                <!--<td>1%</td>-->
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">30000</td>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">10000</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">This Year Running</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">4</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">2</td>
-                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">6</td>
-                                                <!--<td style="background-color:rgba(129, 207, 224,0.7);color: #000;"></td>-->
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">60000</td>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">20000</td>
+                                                <td>10010</td>
+                                                <td>Reg Bola</td>
+                                                <td>All</td>
+                                                <td>All</td>
+                                                <td>30,525</td>
+                                                <td>0</td>
+                                                <td>30,525</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
-                                <div id="container"></div>
                             </div>
                             <!-- /.box -->
                         </div>
@@ -661,6 +488,7 @@
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
         <script>
             $(function () {
                 $('#datepicker').datepicker({
@@ -668,87 +496,5 @@
                 });
             });
         </script>
-        <script>
-            Highcharts.chart('container', {
-                colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
-                    '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
-                chart: {
-                    backgroundColor: {
-                        linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
-                        stops: [
-                            [0, '#2a2a2b'],
-                            [1, '#3e3e40']
-                        ]
-                    },
-                    style: {
-                        fontFamily: '\'Unica One\', sans-serif'
-                    },
-                    plotBorderColor: '#606063'
-                },
-                title: {
-                    style: {
-                        color: '#E0E0E3'
-                    },
-                    text: 'Grafik Monthly Traffic Net Revenue'
-                },
-                subtitle: {
-                    text: ''
-                },
-                yAxis: {
-                    gridLineColor: '#707073',
-                    labels: {
-                        style: {
-                            color: '#E0E0E3'
-                        }
-                    },
-                    lineColor: '#707073',
-                    minorGridLineColor: '#505053',
-                    tickColor: '#707073',
-                    tickWidth: 1,
-                    title: {
-                        style: {
-                            color: '#A0A0A3'
-                        }
-                    },
-                    title: {
-                        text: ''
-                    }
-                },
-                legend: {
-                    itemStyle: {
-                        color: '#E0E0E3'
-                    },
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle'
-                },
-                xAxis: {
-                    gridLineColor: '#707073',
-                    labels: {
-                        style: {
-                            color: '#E0E0E3'
-                        }
-                    },
-                    lineColor: '#707073',
-                    minorGridLineColor: '#505053',
-                    tickColor: '#707073',
-                    title: {
-                        text: 'Bulan',
-                        style: {
-                            color: '#fff'
-
-                        }
-                    },
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-                },
-                series: [{
-                        showInLegend: false,
-                        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434, 12]
-                    }]
-
-            });
-        </script>
-
     </body>
 </html>

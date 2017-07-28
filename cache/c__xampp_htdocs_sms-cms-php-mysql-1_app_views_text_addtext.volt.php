@@ -2,37 +2,26 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Daily MT SMS</title>
+        <title>Add New Text</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/bootstrap/css/bootstrap.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet" href="../plugins/iCheck/all.css">
-        <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
-        <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
+        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/skins/_all-skins.min.css">
+
+        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/iCheck/all.css">
+        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datepicker/datepicker3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <style>
-            label{
-                text-align: center;
-            }
-            th{
-                background-color: #4183D7;
-                color: #fff;
-                text-align: center;
-            }
-            #container {
-                max-width: 1000px;
-                height: 400px;
-                margin: 0 auto;
-                margin-top: 35px;
-            }
-        </style>
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
+
 
         <div class="wrapper">
 
@@ -63,7 +52,7 @@
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
                                             <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -94,7 +83,7 @@
                                 <li><a href="../user/manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
                             </ul>
                         </li>
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Report</span>
@@ -103,27 +92,27 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
-                                <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
-                                <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
-                                <li><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
-                                <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
-                                <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
-                                <li><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
-                                <li><a href="mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
-                                <li><a href="dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
-                                <li class="active"><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
-                                <li><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
-                                <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
-                                <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
-                                <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
-                                <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
-                                <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
-                                <li><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
-                                <li><a href="pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
+                                <li><a href="../report/application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
+                                <li><a href="../report/keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
+                                <li><a href="../report/regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
+                                <li><a href="../report/partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
+                                <li><a href="../report/medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
+                                <li><a href="../report/listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
+                                <li><a href="../report/molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
+                                <li><a href="../report/mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
+                                <li><a href="../report/dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
+                                <li><a href="../report/dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
+                                <li><a href="../report/moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
+                                <li><a href="../report/smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
+                                <li><a href="../report/dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
+                                <li><a href="../report/monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
+                                <li><a href="../report/topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
+                                <li><a href="../report/partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
+                                <li><a href="../report/profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
+                                <li><a href="../report/pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="active treeview">
                             <a href="#">
                                 <i class="fa fa-book"></i> <span>CMS TEXT</span>
                                 <span class="pull-right-container">
@@ -131,15 +120,15 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="treeview">
+                                <li class="active treeview">
                                     <a href="#"><i class="fa fa-circle-o"></i> Content Info
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="../text/addtext"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
-                                        <li><a href="../text/managetext"><i class="fa fa-list"></i> Manage Content</a></li>
+                                        <li class="active"><a href="addtext"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
+                                        <li><a href="managetext"><i class="fa fa-list"></i> Manage Content</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -149,8 +138,8 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="../text/addquiz"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
-                                        <li><a href="../text/managequiz"><i class="fa fa-list"></i> Manage Content</a></li>
+                                        <li><a href="addquiz"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
+                                        <li><a href="managequiz"><i class="fa fa-list"></i> Manage Content</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -160,8 +149,8 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="../text/addwap"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
-                                        <li><a href="../text/managewap"><i class="fa fa-list"></i> Manage Content</a></li>
+                                        <li><a href="addwap"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
+                                        <li><a href="managewap"><i class="fa fa-list"></i> Manage Content</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -333,7 +322,9 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>Daily MT SMS</h1>
+                    <h1>
+                        Add New Text
+                    </h1>
                 </section>
 
                 <!-- Main content -->
@@ -343,152 +334,87 @@
                             <!-- AREA CHART -->
                             <div class="box box-primary">
                                 <div class="box-body">
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal" method="post">
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>BULAN</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>Januari</option>
-                                                            <option>Februari</option>
-                                                            <option>Maret</option>
-                                                            <option>April</option>
-                                                        </select>
-                                                    </div>
+                                        <div class="form-group" style="margin-top:15px;">
+                                            <label class="col-sm-2 col-md-offset-2">Service</label>
 
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>2015</option>
-                                                            <option>2016</option>
-                                                            <option>2017</option>
-                                                            <option>2018</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                            <div class="col-sm-5">
+                                                <select id='content' class="form-control" name="id_app">
+                                                    <?php foreach($data as $d): ?>
+                                                    <option value="<?php echo $d['id_app']; ?>"><?php echo $d['id_app'].' - '.ucfirst($d['app_desc']); ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>SHORTCODE</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>97979</option>
-                                                            <option>99999</option>
-                                                            <option>11111</option>
-                                                            <option>33333</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-md-offset-2">Content</label>
+
+                                            <div class="col-sm-5">
+                                                <textarea class="form-control" name="content_field" rows="3" placeholder="Content ..."></textarea>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>TELCO</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>All</option>
-                                                            <option>TELKOMSEL</option>
-                                                            <option>INDOSAT</option>
-                                                            <option>XL</option>
-                                                            <option>HUTCH</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-md-offset-2">Category</label>
+
+                                            <div class="col-sm-5">
+                                                <input type="text" name="category" class="form-control" placeholder="Category">
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <div class="col-md-2 col-lg-offset-2">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-md-offset-2">Character Count</label>
+
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" placeholder="160" disabled="">
                                             </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-md-offset-2">Publish Date</label>
+
+                                            <div class="col-sm-5">
+                                                <!-- Date -->
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </div>
+                                                    <input type="text" name="publish_date" class="form-control pull-right" id="datepicker" placeholder="Date">
+                                                </div>
+                                                <!-- /.input group -->
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 col-md-offset-2">Publish Seq</label>
+
+                                            <div class="col-sm-5">
+                                                <select id='fieldAjax' class="form-control" name='seq'>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5 col-md-offset-4">
+                                            <button type="submit" class="btn btn-info">SUBMIT</button>
                                         </div>
                                     </form>
                                 </div>
                                 <!-- /.box-body -->
-
-                                <div class="box-body">
-                                    <p style="color:#446CB3">
-                                        DAILY MT SMS : [ Bulan : 06 , Tahun : 2017 ] [ SHORTCODE : All ] [ TELCO : All ]
-                                    </p>
-                                </div>
-
-                                <div class="box-body" style="overflow-x:auto">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th style="text-align: center">SERVICE</th>
-                                                <th style="text-align: center">5</th>
-                                                <th style="text-align: center">4</th>
-                                                <th style="text-align: center">3</th>
-                                                <th style="text-align: center">2</th>
-                                                <th style="text-align: center">1</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">Reg Game_10011</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">Reg Tawa_10012</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">Reg Masak_10013</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">Reg Gawang_10014</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                                <td>131.245</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div id="container"></div>
                             </div>
                             <!-- /.box -->
                         </div>
+                        <!-- /.col md 12 -->
                     </div>
                     <!-- /.row -->
 
                 </section>
                 <!-- /.content -->
-
             </div>
             <!-- /.content-wrapper -->
+
+
             <footer class="main-footer">
                 <strong>Copyright &copy; 2017 Mobiwin.</strong> All rights
                 reserved.
@@ -499,129 +425,76 @@
         <!-- ./wrapper -->
 
         <!-- jQuery 3.1.1 -->
-        <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
 
-        <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/bootstrap/js/bootstrap.min.js"></script>
         <!-- Morris.js charts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <!-- daterangepicker -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <!-- Slimscroll -->
-        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
-        <script src="../plugins/fastclick/fastclick.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/dist/js/adminlte.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
-        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
-        <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+        <script src="<?php echo $this->config->base_url; ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-        <script src="https://code.highcharts.com/highcharts.src.js"></script>
         <script>
             $(function () {
                 $('#datepicker').datepicker({
                     autoclose: true
                 });
             });
-        </script>
 
-        <script>
-            Highcharts.chart('container', {
-                colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
-                    '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
-                chart: {
-                    backgroundColor: {
-                        linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
-                        stops: [
-                            [0, '#2a2a2b'],
-                            [1, '#3e3e40']
-                        ]
-                    },
-                    style: {
-                        fontFamily: '\'Unica One\', sans-serif'
-                    },
-                    plotBorderColor: '#606063'
-                },
-                title: {
-                    style: {
-                        color: '#E0E0E3'
-                    },
-                    text: 'Grafik Daily MT SMS'
-                },
-
-                subtitle: {
-                    text: ''
-                },
-
-                yAxis: {
-                    gridLineColor: '#707073',
-                    labels: {
-                        style: {
-                            color: '#E0E0E3'
+            $("#content").change(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "../text/getseq",
+                    data: "id=" + $(this).val(),
+                    success: function (response) {
+                        var max = parseInt(response);
+                        $("#fieldAjax").empty();
+                        for (var i = max+1; i < 10; i++) {
+                            $("#fieldAjax").append("<option value='" + i + "'>" + i + "</option>");
                         }
                     },
-                    lineColor: '#707073',
-                    minorGridLineColor: '#505053',
-                    tickColor: '#707073',
-                    tickWidth: 1,
-                    title: {
-                        style: {
-                            color: '#A0A0A3'
-                        }
-                    },
-                    title: {
-                        style: {
-                            color: '#fff'
-                        },
-                        text: 'Jumlah MT'
+                    error: function () {
+                        alert('Error occured');
                     }
-                },
-                xAxis: {
-                    gridLineColor: '#707073',
-                    labels: {
-                        style: {
-                            color: '#E0E0E3'
+                });
+            });
+
+            $(document).ready(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "../text/getseq",
+                    data: "id=" + $("#content").val(),
+                    success: function (response) {
+                        var max = parseInt(response);
+                        $("#fieldAjax").empty();
+                        for (var i = max+1; i < 10; i++) {
+                            $("#fieldAjax").append("<option value='" + i + "'>" + i + "</option>");
                         }
                     },
-                    lineColor: '#707073',
-                    minorGridLineColor: '#505053',
-                    tickColor: '#707073',
-                    title: {
-                        text: 'Tanggal',
-                        style: {
-                            color: '#fff'
-
-                        }
+                    error: function () {
+                        alert('Error occured');
                     }
-
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle'
-                },
-
-                plotOptions: {
-                    series: {
-                        pointStart: 1
-                    }
-                },
-
-                series: [{
-                        showInLegend: false,
-                        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434, 12]
-                    }]
-
+                });
             });
         </script>
+
     </body>
 </html>

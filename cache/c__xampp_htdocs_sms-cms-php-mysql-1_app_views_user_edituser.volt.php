@@ -2,40 +2,30 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>DN Incoming Logs</title>
+        <title>Edit New User</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
         <link rel="stylesheet" href="../plugins/iCheck/all.css">
         <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
         <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <style>
-            label{
-                text-align: center;
-            }
-            th{
-                background-color: #4183D7;
-                color: #fff;
-                text-align: center;
-            }
-            td{
-                text-align: center;
-            }
-        </style>
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
-
         <div class="wrapper">
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index.html" class="logo">
+                <a href="" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>CMS</b></span>
                     <!-- logo for regular state and mobile devices -->
@@ -54,16 +44,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -79,7 +69,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li class="treeview">
+                        <li class="active treeview">
                             <a href="#">
                                 <i class="fa fa-user"></i> <span>User</span>
                                 <span class="pull-right-container">
@@ -87,11 +77,11 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../user/adduser"><i class="fa fa-pencil-square-o"></i> Add New User</a></li>
-                                <li><a href="../user/manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
+                                <li class="active"><a href="adduser"><i class="fa fa-pencil-square-o"></i> Add New User</a></li>
+                                <li><a href="manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
                             </ul>
                         </li>
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Report</span>
@@ -100,24 +90,24 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
-                                <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
-                                <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
-                                <li><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
-                                <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
-                                <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
-                                <li><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
-                                <li><a href="mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
-                                <li class="active"><a href="dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
-                                <li><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
-                                <li><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
-                                <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
-                                <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
-                                <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
-                                <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
-                                <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
-                                <li><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
-                                <li><a href="pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
+                                <li><a href="../report/application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
+                                <li><a href="../report/keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
+                                <li><a href="../report/regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
+                                <li><a href="../report/partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
+                                <li><a href="../report/medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
+                                <li><a href="../report/listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
+                                <li><a href="../report/molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
+                                <li><a href="../report/mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
+                                <li><a href="../report/dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
+                                <li><a href="../report/dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
+                                <li><a href="../report/moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
+                                <li><a href="../report/smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
+                                <li><a href="../report/dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
+                                <li><a href="../report/monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
+                                <li><a href="../report/topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
+                                <li><a href="../report/partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
+                                <li><a href="../report/profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
+                                <li><a href="../report/pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -331,163 +321,177 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        DN Incoming Logs
+                        Edit User
                     </h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <!-- Main row -->
                     <div class="row">
                         <div class="col-md-12">
                             <!-- AREA CHART -->
                             <div class="box box-primary">
                                 <div class="box-body">
+                                    <?php
+                                    if(isset($_GET['msg'])) {
+                                    echo '<b style=color:red>'.$_GET['msg'].'</b>';
+                                    }
+                                    ?>
+                                    <form class="form-horizontal" method="post" action="../user/updateuser">
+                                        <?php foreach ($data as $d) { ?>
+                                        <div class="box-body">
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Nama / PIC</label>
 
-                                    <!-- form start -->
-                                    <form class="form-horizontal">
-
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">MSISDN</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control"  placeholder="MSISDN">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TELCO</label>
-
-                                            <div class="col-sm-5">
-                                                <select class="form-control">
-                                                    <option>All</option>
-                                                    <option>TELKOMSEL</option>
-                                                    <option>XL</option>
-                                                    <option>INDOSAT</option>
-                                                    <option>HUTCH</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">MSISDN</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="MSISDN">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">SHORTCODE</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="SHORTCODE">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TRX ID</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="TRX ID">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">SID</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="SID">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">STATUS</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="STATUS">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">LIMIT</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="LIMIT">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TIME</label>
-
-                                            <div class="col-sm-5">
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option>Januari</option>
-                                                        <option>Februari</option>
-                                                        <option>Maret</option>
-                                                        <option>April</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option>2015</option>
-                                                        <option>2016</option>
-                                                        <option>2017</option>
-                                                        <option>2018</option>
-                                                    </select>
+                                                <div class="col-sm-10">
+                                                    <input type="hidden" name="id" value="<?= $d['id_user'] ?>">
+                                                    <input type="text" class="form-control" name="nama" placeholder="Name of PIC" value="<?= $d['name'] ?>">
                                                 </div>
                                             </div>
+
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Username</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Username" value="<?= $d['username'] ?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Password</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="***********">
+                                                </div>
+                                            </div>
+
+                                            <!--                                            <div class="form-group">
+                                                                                            <label class="col-sm-2">Level</label>
+                                            
+                                                                                            <div class="col-sm-10">
+                                                                                                <select class="form-control">
+                                                                                                    <option>Admin Developer</option>
+                                                                                                    <option>Admin Text CMS</option>
+                                                                                                    <option>Admin Content CMS</option>
+                                                                                                    <option>Admin CS CMS</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>-->
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2">Accessable Page</label> 
+                                                <small style="color: red">Don't select accessable page if you don't want change accessable page previously</small>
+                                                <div class="col-sm-10">
+                                                    <div class="col-md-3">
+                                                        <label>Page User</label>
+                                                        <select multiple class="form-control" name="page[]">
+                                                            <option value="adduser">Add New User</option>
+                                                            <option value="manageuser">Manage User</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label>Page Report</label>
+                                                        <select multiple class="form-control" name="page[]">
+                                                            <option value="application">Application</option>
+                                                            <option value="keyword">Keyword</option>
+                                                            <option value="regkeyword">Reg Keyword</option>
+                                                            <option value="partnername">Partner Name</option>
+                                                            <option value="medianame">Media Name</option>
+                                                            <option value="listcharging">List Charging</option>
+                                                            <option value="molog">MO LOG</option>
+                                                            <option value="mtlog">MT LOG</option>
+                                                            <option value="dnlog">DN LOG</option>
+                                                            <option value="dailymt">Daily MT SMS</option>
+                                                            <option value="moreg">MO Reg</option>
+                                                            <option value="smssubscriber">SMS Subscriber</option>
+                                                            <option value="dailytraffic">Daily Traffic</option>
+                                                            <option value="monthlytraffic">Monthly Traffic</option>
+                                                            <option value="topservice">Top Service</option>
+                                                            <option value="partnertraffic">Partner Traffic</option>
+                                                            <option value="profitloss">Profit Loss</option>
+                                                            <option value="pushsms">Push SMS</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label>Page Text</label>
+                                                        <select multiple class="form-control" name="page[]">
+                                                            <option value="addtext">Add New Content Info</option>
+                                                            <option value="managetext">Manage Content Info</option>
+                                                            <option value="addquiz">Add New Content Quiz</option>
+                                                            <option value="managequiz">Manage Content Quiz</option>
+                                                            <option value="addwap">Add New Content WAP</option>
+                                                            <option value="managewap">Manage Content WAP</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label>Page Content</label>
+                                                        <select multiple class="form-control" name="page[]">
+                                                            <option value="monophoniccontent">Monophonic Content</option>
+                                                            <option value="monophoniccategory">Monophonic Category</option>
+                                                            <option value="monophonicmarket">Monophonic Market Code</option>
+                                                            <option value="polyphoniccontent">Polyphonic Content</option>
+                                                            <option value="polyphoniccategory">Polyphonic Category</option>
+                                                            <option value="polyphonicmarket">Polyphonic Market Code</option>
+                                                            <option value="truetonecontent">True Tone Content</option>
+                                                            <option value="truetonecategory">True Tone Category</option>
+                                                            <option value="truetonemarket">True Tone Market Code</option>
+                                                            <option value="colorcontent">Color Picture Content</option>
+                                                            <option value="colorcategory">Color Picture Category</option>
+                                                            <option value="colormarket">Color Picture Market Code</option>
+                                                            <option value="animatedcontent">Animated Picture Content</option>
+                                                            <option>Animated Picture Category</option>
+                                                            <option>Animated Picture Market Code</option>
+                                                            <option>Themes Content</option>
+                                                            <option>Themes Category</option>
+                                                            <option>Themes Market Code</option>
+                                                            <option>Java Games Content</option>
+                                                            <option>Java Games Category</option>
+                                                            <option>Java Games Market Code</option>
+                                                            <option>Video Content</option>
+                                                            <option>Video Category</option>
+                                                            <option>Video Market Code</option>
+                                                            <option>Premium Games Content</option>
+                                                            <option>Premium Games Category</option>
+                                                            <option>Premium Games Market Code</option>
+                                                            <option>Full Track Content</option>
+                                                            <option>Full Track Category</option>
+                                                            <option>Full Track Market Code</option>
+                                                            <option>Java App Content</option>
+                                                            <option>Java App Category</option>
+                                                            <option>Java App Market Code</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label>Page CS</label>
+                                                        <select multiple class="form-control" name="page[]">
+                                                            <option>Check MSISDN</option>
+                                                            <option>Blacklist MSISDN</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-offset-2">
+                                                <button type="submit" class="btn btn-warning" style="margin-left:5px;">Update</button>
+                                                <button type="reset" class="btn btn-info" style="margin-left:5px;">Cancel</button>
+                                            </div>
                                         </div>
-
-                                        <div class="col-md-5 col-md-offset-4">
-                                            <button type="submit" class="btn btn-info">SUBMIT</button>
-                                        </div>
-
-
-                                        <!-- /.box-body -->
+                                        <?php } ?>
                                     </form>
 
                                 </div>
                                 <!-- /.box-body -->
-
-                                <div class="box-body" style="overflow-x:auto">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>MSISDN</th>
-                                                <th>TELCO</th>
-                                                <th>SHORTCODE</th>
-                                                <th>TRX ID</th>
-                                                <th>SID</th>
-                                                <th>STATUS</th>
-                                                <th>DATETIME</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach ($data as $d) { ?>
-                                            <tr>
-                                                <td><a href=""><?= $d['msisdn'] ?></a></td>
-                                                <td><?= $d['telco'] ?></td>
-                                                <td><?= $d['shortcode'] ?></td>
-                                                <td><?= $d['trx_id'] ?></td>
-                                                <td></td>
-                                                <td><?= $d['stat'] ?></td>
-                                                <td><?= $d['trx_date'] ?></td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                             <!-- /.box -->
                         </div>
-                        <!-- /.col md 12 -->
 
                     </div>
-                    <!-- /.row (main row) -->
+                    <!-- /.row -->
 
                 </section>
                 <!-- /.content -->
@@ -501,7 +505,7 @@
 
         </div>
         <!-- ./wrapper -->
-        
+
         <!-- jQuery 3.1.1 -->
         <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 
@@ -522,32 +526,12 @@
         <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
         <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-        <!-- CK Editor -->
-        <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-        <script src="https://code.highcharts.com/highcharts.src.js"></script>
-
-        <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": false,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false
-                });
-            });
-        </script>
     </body>
 </html>
+

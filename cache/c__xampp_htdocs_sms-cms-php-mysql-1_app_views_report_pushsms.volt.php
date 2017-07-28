@@ -2,17 +2,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Partner Name</title>
+        <title>Push SMS</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/iCheck/all.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datepicker/datepicker3.css">
+        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="../plugins/iCheck/all.css">
+        <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
         <style>
             label{
@@ -21,12 +21,17 @@
             th{
                 background-color: #4183D7;
                 color: #fff;
+                text-align: center;
+            }
+            td{
+                text-align: center;
             }
         </style>
 
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
+
         <div class="wrapper">
 
             <header class="main-header">
@@ -50,16 +55,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -99,7 +104,7 @@
                                 <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
                                 <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
                                 <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
-                                <li class="active"><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
+                                <li><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
                                 <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
                                 <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
                                 <li><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
@@ -113,7 +118,7 @@
                                 <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
                                 <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
                                 <li><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
-                                <li><a href="pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
+                                <li class="active"><a href="pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -326,7 +331,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>PARTNER NAME</h1>
+                    <h1>Push SMS</h1>
                 </section>
 
                 <!-- Main content -->
@@ -337,68 +342,129 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <form class="form-horizontal">
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <label>Partner Like</label>
+                                                    <label>SERVICE</label>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="text" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-info btn-flat">Go!</button>
-                                                            </span>
-                                                        </div>
+                                                        <select class="form-control">
+                                                            <option>All</option>
+                                                            <option>REG GAME</option>
+                                                            <option>REG BOLA</option>
+                                                            <option>REG REG</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <!-- /.box-body -->
 
-                                <div class="box-body" style="overflow-x:auto">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th style="text-align: center">PARTNER ID</th>
-                                                <th style="text-align: center">PARTNER</th>
-                                                <th style="text-align: center">ENTRY DATE</th>
-                                                <th style="text-align: center">EDIT</th>
-                                                <th style="text-align: center">DELETE</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <?php foreach ($data as $d) { ?>
-                                            <tr>
-                                                <td style="text-align: center"><?= $d['id'] ?></td>
-                                                <td style="text-align: center"><?= $d['name_partner'] ?></td>
-                                                <td style="text-align: center"><?= $d['create_partner'] ?></td>
-                                                <td style="text-align: center"><a href="<?= $this->config->base_url ?>report/editpartner?id=<?= $d['id'] ?>">EDIT</a></td>
-                                                <td style="text-align: center"><a href="deletepartner/<?= $d['id'] ?>">DELETE</a></td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--body box-->
-                            </div>
-                            <!-- box box-primary -->
-
-                            <div class="box box-primary">
-                                <div class="box-body">
-                                    <h3>ADD PARTNER</h3>
-                                    <form class="form-horizontal" style="margin-top:25px;" method="post">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <label>PARTNER</label>
+                                                    <label>MSISDN</label>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <input type="text" class="form-control" name="name_partner"  placeholder="PARTNER">
+                                                        <input type="text" class="form-control"  placeholder="MSISDN">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>Shortname/SDM Code</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control"  placeholder="Shortname/SDM Code">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>SHORTCODE</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>All</option>
+                                                            <option>97979</option>
+                                                            <option>99999</option>
+                                                            <option>11111</option>
+                                                            <option>33333</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>TELCO</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>All</option>
+                                                            <option>TELKOMSEL</option>
+                                                            <option>INDOSAT</option>
+                                                            <option>XL</option>
+                                                            <option>HUTCH</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>PRICE</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>PULL-0</option>
+                                                            <option>PUSH-0</option>
+                                                            <option>PULL-1000</option>
+                                                            <option>PULL-2000</option>
+                                                            <option>PUSH-2000</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>SMS</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <textarea class="form-control" rows="3" placeholder="SMS"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>CHARACTER COUNT</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" placeholder="160" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -413,7 +479,36 @@
                                     </form>
                                 </div>
                                 <!-- /.box-body -->
+
+                                <div class="box-body" style="overflow-x:auto">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>APPID</th>
+                                                <th>DESCRIPTION</th>
+                                                <th>MSISDN</th>
+                                                <th>SHORTCODE</th>
+                                                <th>TELCO</th>
+                                                <th>SMS</th>
+                                                <th>ENTRY DATE</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>10013</td>
+                                                <td>Reg Masak</td>
+                                                <td>6285811786780</td>
+                                                <td>92000</td>
+                                                <td>isat</td>
+                                                <td>test push masak</td>
+                                                <td>2017-02-21 18:07:02</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+                            <!-- /.box -->
                         </div>
                     </div>
                     <!-- /.row -->
@@ -441,43 +536,25 @@
             $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="<?php echo $this->config->base_url; ?>public/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
         <!-- Morris.js charts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <!-- daterangepicker -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <!-- Slimscroll -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/fastclick/fastclick.js"></script>
+        <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="<?php echo $this->config->base_url; ?>public/dist/js/adminlte.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/iCheck/icheck.min.js"></script>
+        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
+        <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
-        <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false
-                });
-            });
-        </script>
     </body>
 </html>

@@ -50,16 +50,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  {{pic}}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -397,8 +397,8 @@
                                                 <td style="text-align: center">95000</td>
                                                 <td style="text-align: center">10019</td>
                                                 <td style="text-align: center">2017-06-02 22:47:59</td>
-                                                <td style="text-align: center"><a href="">EDIT</a></td>
-                                                <td style="text-align: center"><a href="">DELETE</a></td>
+                                                <td style="text-align: center"><a href=""><i class="fa fa-pencil"></i></a></td>
+                                                <td style="text-align: center"><a href=""><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>

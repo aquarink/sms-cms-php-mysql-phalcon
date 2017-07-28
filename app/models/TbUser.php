@@ -48,6 +48,13 @@ class TbUser extends \Phalcon\Mvc\Model
     public $user_create;
 
     /**
+     *
+     * @var string
+     * @Column(type="string", length=10, nullable=true)
+     */
+    public $user_stat;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()

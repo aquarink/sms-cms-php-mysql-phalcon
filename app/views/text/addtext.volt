@@ -340,10 +340,10 @@
                                             <label class="col-sm-2 col-md-offset-2">Service</label>
 
                                             <div class="col-sm-5">
-                                                <select class="form-control" name="id_app">
-                                                    {% for d in data %}
-                                                    <option value="{{ d['id_app'] }}">{{ d['id_app'] }} - {{ d['app_desc'] }}</option>
-                                                    {% endfor %}
+                                                <select id='content' class="form-control" name="id_app">
+                                                    <?php foreach($data as $d): ?>
+                                                    <option value="<?php echo $d['id_app']; ?>"><?php echo $d['id_app'].' - '.ucfirst($d['app_desc']); ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -391,7 +391,8 @@
                                             <label class="col-sm-2 col-md-offset-2">Publish Seq</label>
 
                                             <div class="col-sm-5">
-                                                <input type="text" class="form-control" name="content_number" placeholder="Publish Seq" >
+                                                <select id='fieldAjax' class="form-control" name='seq'>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -455,6 +456,42 @@
             $(function () {
                 $('#datepicker').datepicker({
                     autoclose: true
+                });
+            });
+
+            $("#content").change(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "../text/getseq",
+                    data: "id=" + $(this).val(),
+                    success: function (response) {
+                        var max = parseInt(response);
+                        $("#fieldAjax").empty();
+                        for (var i = max+1; i < 10; i++) {
+                            $("#fieldAjax").append("<option value='" + i + "'>" + i + "</option>");
+                        }
+                    },
+                    error: function () {
+                        alert('Error occured');
+                    }
+                });
+            });
+
+            $(document).ready(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "../text/getseq",
+                    data: "id=" + $("#content").val(),
+                    success: function (response) {
+                        var max = parseInt(response);
+                        $("#fieldAjax").empty();
+                        for (var i = max+1; i < 10; i++) {
+                            $("#fieldAjax").append("<option value='" + i + "'>" + i + "</option>");
+                        }
+                    },
+                    error: function () {
+                        alert('Error occured');
+                    }
                 });
             });
         </script>

@@ -482,12 +482,41 @@
                                                 <td style="text-align: center">{{ d['telco'] }}</td>
                                                 <td style="text-align: center">{{ d['shortcode'] }}</td>
                                                 <td style="text-align: center">{{ d['trx_id'] }}</td>
-                                                <td style="text-align: center"><a href="">{{ d['session_id'] }}</a></td>
+                                                <td style="text-align: center"><a data-toggle="modal" data-target="#view-modal" href="" onclick="getData({{ d['session_id'] }})">{{ d['session_id'] }}</a></td>
                                                 <td style="text-align: center">{{ d['trx_date'] }}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <div id="view-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog modal-lg" style="width:100%"> 
+                                        <div class="modal-content">  
+
+                                            <div class="modal-header"> 
+                                                <h4 class="modal-title">
+                                                    <i class="glyphicon glyphicon-dashboard"></i> Session ID Data
+                                                </h4> 
+                                            </div> 
+
+                                            <div class="modal-body">                     
+                                                <div id="modal-loader" style="display: none; text-align: center;">
+                                                    <!-- ajax loader -->
+                                                    <h1>Loading</h1>
+                                                </div>
+
+                                                <table id="dynamic-content" class="table table-responsive table-bordered" style="font-size:12px">
+                                                    
+                                                </table>
+                                            </div> 
+
+                                            <div class="modal-footer"> 
+                                                <button onclick="clearData()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                                            </div> 
+
+                                        </div> 
+                                    </div>
                                 </div>
 
                             </div>
@@ -517,7 +546,7 @@
         <script src="<?php echo $this->config->base_url; ?>public/plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-$.widget.bridge('uibutton', $.ui.button);
+                                                    $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="<?php echo $this->config->base_url; ?>public/bootstrap/js/bootstrap.min.js"></script>
@@ -538,24 +567,37 @@ $.widget.bridge('uibutton', $.ui.button);
         <!-- bootstrap datepicker -->
         <script src="<?php echo $this->config->base_url; ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
         <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
+                                                    $(function () {
+                                                    $('#datepicker').datepicker({
+                                                    autoclose: true
+                                                    });
+                                                    });
         </script>
         <script>
             $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": false,
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+            "paging": false,
                     "lengthChange": false,
                     "searching": false,
                     "ordering": false,
                     "info": true,
                     "autoWidth": false
-                });
             });
+            });
+            
+        </script>
+
+        <script>
+            function getData(sessId) {
+            $.get("http://localhost/sms-cms-php-mysql-1/user/pushbysessid?id=" + sessId, function(data, status){
+            $('#dynamic-content').append(data);
+            });
+            }
+
+            function clearData() {
+            $('#dynamic-content').empty();
+            }
         </script>
     </body>
 </html>

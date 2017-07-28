@@ -10,6 +10,9 @@ class TextController extends \Phalcon\Mvc\Controller {
         $app = new TbAppConfig();
         $appData = $app::find()->toArray();
         $this->view->setVar("data", $appData);
+        
+        
+        
         if ($this->request->isPost()) {
 
             $datasent = $this->request->getPost();
@@ -65,6 +68,17 @@ class TextController extends \Phalcon\Mvc\Controller {
     }
 
     public function managewapAction() {
+        
+    }
+    
+    public function getseqAction() {
+        $id = $this->request->getQuery('id');
+        $query = "SELECT MAX(content_number) AS mCn FROM tb_apps_content WHERE id_app = '$id' GROUP BY id_app LIMIT 1";
+        $result = $this->db->query($query);
+        
+        foreach($result->fetchAll() as $seq) {
+            echo $seq['mCn'];
+        }
         
     }
 

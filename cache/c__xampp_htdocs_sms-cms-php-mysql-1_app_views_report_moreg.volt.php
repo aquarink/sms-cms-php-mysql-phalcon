@@ -2,32 +2,39 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Video Category</title>
+        <title>MO Reg Stat</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
         <link rel="stylesheet" href="../plugins/iCheck/all.css">
         <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
         <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
         <style>
-            th{
-                background-color: #4183D7;
-                color: #fff;
+            label{
                 text-align: center;
             }
             td{
                 text-align: center;
             }
+            #container {
+                max-width: 1000px;
+                height: 400px;
+                margin: 0 auto;
+                margin-top: 35px;
+            }
         </style>
     </head>
-
     <body  class="hold-transition skin-blue sidebar-mini">
+
         <div class="wrapper">
 
             <header class="main-header">
@@ -51,16 +58,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -88,7 +95,7 @@
                                 <li><a href="../user/manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="active treeview">
                             <a href="#">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Report</span>
@@ -97,24 +104,24 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../report/application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
-                                <li><a href="../report/keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
-                                <li><a href="../report/regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
-                                <li><a href="../report/partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
-                                <li><a href="../report/medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
-                                <li><a href="../report/listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
-                                <li><a href="../report/molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
-                                <li><a href="../report/mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
-                                <li><a href="../report/dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
-                                <li><a href="../report/dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
-                                <li><a href="../report/moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
-                                <li><a href="../report/smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
-                                <li><a href="../report/dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
-                                <li><a href="../report/monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
-                                <li><a href="../report/topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
-                                <li><a href="../report/partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
-                                <li><a href="../report/profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
-                                <li><a href="../report/pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
+                                <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
+                                <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
+                                <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
+                                <li><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
+                                <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
+                                <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
+                                <li><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
+                                <li><a href="mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
+                                <li><a href="dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
+                                <li><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
+                                <li class="active"><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
+                                <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
+                                <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
+                                <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
+                                <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
+                                <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
+                                <li><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
+                                <li><a href="pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -161,7 +168,7 @@
                             </ul>
                         </li>
 
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-book"></i> <span>CMS RICH CONTENT</span>
                                 <span class="pull-right-container">
@@ -176,9 +183,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="monophoniccontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="monophoniccategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="monophonicmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/monophoniccontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/monophoniccategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/monophonicmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -188,9 +195,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="polyphoniccontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="polyphoniccategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="polyphonicmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/polyphoniccontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/polyphoniccategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/polyphonicmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -200,9 +207,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="truetonecontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="truetonecategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="truetonemarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/truetonecontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/truetonecategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/truetonemarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -212,9 +219,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="colorcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="colorcategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="colormarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/colorcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/colorcategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/colormarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -224,9 +231,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="animatedcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="animatedcategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="animatedmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/animatedcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/animatedcategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/animatedmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -236,9 +243,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="themescontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="themescategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="themesmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/themescontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/themescategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/themesmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -248,21 +255,21 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="javacontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="javacategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="javamarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/javacontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/javacategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/javamarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
-                                <li class="active treeview">
+                                <li class="treeview">
                                     <a href="#"><i class="fa fa-circle-o"></i> Video
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="videocontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li class="active"><a href="videocategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="videomarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/videocontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/videocategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/videomarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -272,9 +279,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="premiumcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="premiumcategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="premiummarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/premiumcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/premiumcategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/premiummarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -284,9 +291,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="trackcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="trackcategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="trackmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/trackcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/trackcategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/trackmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -296,9 +303,9 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="javaappcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
-                                        <li><a href="javaappcategory"><i class="fa fa-list"></i> Category</a></li>
-                                        <li><a href="javaappmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
+                                        <li><a href="../content/javaappcontent"><i class="fa fa-pencil-square-o"></i> Content</a></li>
+                                        <li><a href="../content/javaappcategory"><i class="fa fa-list"></i> Category</a></li>
+                                        <li><a href="../content/javaappmarket"><i class="fa fa-barcode"></i> Market Code</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -328,7 +335,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Video
+                        MO Reg Stat
                     </h1>
                 </section>
 
@@ -337,24 +344,28 @@
                     <!-- Main row -->
                     <div class="row">
 
-                        <!-- Main content -->
-                        <section class="content">
+                        <div class="col-md-12">
+                            <!-- AREA CHART -->
                             <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Create New Category</h3>
-                                </div>
-                                <!--box body start-->
                                 <div class="box-body">
+
                                     <form class="form-horizontal">
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <label>Category Name</label>
+                                                    <label>DATE</label>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <input type="text" class="form-control" placeholder="Category Name">
+                                                        <!-- Date -->
+                                                        <div class="input-group date">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </div>
+                                                            <input type="text" class="form-control pull-right" id="datepicker" placeholder="Date">
+                                                        </div>
+                                                        <!-- /.input group -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -363,13 +374,15 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <label>Status</label>
+                                                    <label>SHORTCODE</label>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
                                                         <select class="form-control">
-                                                            <option>Active</option>
-                                                            <option>Non Active</option>
+                                                            <option>All</option>
+                                                            <option>97979</option>
+                                                            <option>99999</option>
+                                                            <option>88777</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -377,54 +390,103 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <div class="col-md-2 col-md-offset-2">
-                                                <button type="submit" class="btn btn-primary" style="margin-left: 5px;">Submit</button>
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>TELCO</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>All</option>
+                                                            <option>Telkomsel</option>
+                                                            <option>Indosat</option>
+                                                            <option>XL</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
-                                    </form>
-                                </div>
-                                <!--box body end-->
-                            </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>SERVICE</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>All</option>
+                                                            <option>Reg Game</option>
+                                                            <option>Reg Bola</option>
+                                                            <option>Reg Masak</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Category List</h3>
+                                        <div class="col-md-12">
+                                            <div class="col-md-2 col-lg-offset-2">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
                                 </div>
-                                <!--box body start-->
+                                <!-- /.box-body -->
+
                                 <div class="box-body">
-                                    <form class="form-horizontal">
-
-                                        <table id="example2" class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>Category Name</th>
-                                                    <th>Status</th>
-                                                    <th>Create Date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Funny</td>
-                                                    <td>Active</td>
-                                                    <td>26 Mar 2017</td>
-                                                    <td>
-                                                        <a href=""><i class="fa fa-pencil" style="margin-right: 2px;"></i>Edit</a>
-                                                        |
-                                                        <a href=""><i class="fa fa-trash" style="margin-right: 2px;"></i>Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                    </form>
+                                    <p style="color:#446CB3">
+                                        MO STAT : [ Tanggal : 2017-06-05 ] [ SHORTCODE : All ] [ TELCO : All ] [ Service : All ]
+                                    </p>
                                 </div>
-                                <!--box body end-->
-                            </div>
-                        </section>
-                        <!-- /.content -->
 
+                                <div class="box-body" style="overflow-x:auto">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">JAM</th>
+                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MO REG</th>
+                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MO UNREG</th>
+                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MO TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>00</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>01</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>02</td>
+                                                <td>0</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="background-color: rgba(34, 167, 240,0.8);color: #fff;">TOTAL</td>
+                                                <td style="background-color: rgba(34, 167, 240,0.8);color: #fff;">44</td>
+                                                <td style="background-color: rgba(34, 167, 240,0.8);color: #fff;">55</td>
+                                                <td style="background-color: rgba(34, 167, 240,0.8);color: #fff;">66</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div id="container"></div>
+
+
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col md 12 -->
 
                     </div>
                     <!-- /.row (main row) -->
@@ -462,26 +524,124 @@
         <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
         <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
         <script>
             $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false
+                $('#datepicker').datepicker({
+                    autoclose: true
                 });
             });
+
         </script>
+
+        <script>
+            Highcharts.chart('container', {
+                colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
+                    '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+                chart: {
+                    backgroundColor: {
+                        linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
+                        stops: [
+                            [0, '#2a2a2b'],
+                            [1, '#3e3e40']
+                        ]
+                    },
+                    style: {
+                        fontFamily: '\'Unica One\', sans-serif'
+                    },
+                    plotBorderColor: '#606063'
+                },
+                title: {
+                    text: 'Grafik MO Reg/Unreg Perjam',
+                    style: {
+                        color: '#fff'
+
+                    }
+                },
+
+                subtitle: {
+                    text: ''
+                },
+
+                yAxis: {
+                    gridLineColor: '#707073',
+                    labels: {
+                        style: {
+                            color: '#E0E0E3'
+                        }
+                    },
+                    lineColor: '#707073',
+                    minorGridLineColor: '#505053',
+                    tickColor: '#707073',
+                    title: {
+                        text: 'Tanggal',
+                        style: {
+                            color: '#fff'
+
+                        }
+                    },
+                    title: {
+                        text: 'Jumlah MO',
+                        style: {
+                            color: '#fff'
+
+                        }
+                    }
+                },
+                xAxis: {
+                    gridLineColor: '#707073',
+                    labels: {
+                        style: {
+                            color: '#E0E0E3'
+                        }
+                    },
+                    lineColor: '#707073',
+                    minorGridLineColor: '#505053',
+                    tickColor: '#707073',
+                    title: {
+                        text: 'Tanggal',
+                        style: {
+                            color: '#fff'
+
+                        }
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        color: '#E0E0E3'
+                    },
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        pointStart: 00,
+                        pointEnd: 23
+                    }
+                },
+
+                series: [{
+                        name: 'Reg',
+                        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175, 154175, 154175]
+                    }, {
+                        name: 'Unreg',
+                        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434, 12]
+                    }]
+
+            });
+        </script>
+
     </body>
 </html>

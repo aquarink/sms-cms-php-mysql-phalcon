@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>MT Outgoing Log</title>
+        <title>Daily Traffic</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -17,6 +17,20 @@
         <style>
             label{
                 text-align: center;
+            }
+            th{
+                background-color: #4183D7;
+                color: #fff;
+                text-align: center;
+            }
+            td{
+                text-align: center;
+            }
+            #container {
+                max-width: 1000px;
+                height: 400px;
+                margin: 0 auto;
+                margin-top: 35px;
             }
         </style>
 
@@ -46,16 +60,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -99,12 +113,12 @@
                                 <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
                                 <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
                                 <li><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
-                                <li class="active"><a href="mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
+                                <li><a href="mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
                                 <li><a href="dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
                                 <li><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
                                 <li><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
                                 <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
-                                <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
+                                <li class="active"><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
                                 <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
                                 <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
                                 <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
@@ -322,229 +336,257 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        MT Outgoing Log
-                    </h1>
+                    <h1>Daily Traffic</h1>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <!-- Main row -->
                     <div class="row">
                         <div class="col-md-12">
                             <!-- AREA CHART -->
-                            <div class="box box-primary">
+                            <div class="box box-primary" style="padding-bottom:20px;">
                                 <div class="box-body">
-
-                                    <!-- form start -->
                                     <form class="form-horizontal">
 
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">APPID</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control"  placeholder="APPID">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">SUBJECT</label>
-
-                                            <div class="col-sm-5">
-                                                <select class="form-control">
-                                                    <option>All</option>
-                                                    <option>REG</option>
-                                                    <option>UNREG</option>
-                                                    <option>PULL</option>
-                                                    <option>PUSH</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">MSISDN</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="MSISDN">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TELCO</label>
-
-                                            <div class="col-sm-5">
-                                                <select class="form-control">
-                                                    <option>All</option>
-                                                    <option>Telkomsel</option>
-                                                    <option>Indosat</option>
-                                                    <option>XL</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">SHORTCODE</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="SHORTCODE">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">MT TYPE</label>
-
-                                            <div class="col-sm-5">
-                                                <select class="form-control">
-                                                    <option>All</option>
-                                                    <option>TEXT</option>
-                                                    <option>WAPPUSH</option>
-                                                    <option>SMART MESSAGING</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TRX ID</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="TRX ID">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">SESSION ID</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="SESSION ID">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">DATE</label>
-
-                                            <div class="col-sm-5">
-                                                <!-- Date -->
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>BULAN</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>Januari</option>
+                                                            <option>Februari</option>
+                                                            <option>Maret</option>
+                                                            <option>April</option>
+                                                        </select>
                                                     </div>
-                                                    <input type="text" class="form-control pull-right" id="datepicker" placeholder="Date">
-                                                </div>
-                                                <!-- /.input group -->
-                                            </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">LIMIT</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="LIMIT">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">TIME</label>
-
-                                            <div class="col-sm-5">
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option>Januari</option>
-                                                        <option>Februari</option>
-                                                        <option>Maret</option>
-                                                        <option>April</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-sm-6">
-                                                    <select class="form-control">
-                                                        <option>2015</option>
-                                                        <option>2016</option>
-                                                        <option>2017</option>
-                                                        <option>2018</option>
-                                                    </select>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>2015</option>
+                                                            <option>2016</option>
+                                                            <option>2017</option>
+                                                            <option>2018</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-5 col-md-offset-4">
-                                            <button type="submit" class="btn btn-info">SUBMIT</button>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>SHORTCODE</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>97979</option>
+                                                            <option>99999</option>
+                                                            <option>11111</option>
+                                                            <option>33333</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>TELCO</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-4">
+                                                        <select class="form-control">
+                                                            <option>TELKOMSEL</option>
+                                                            <option>INDOSAT</option>
+                                                            <option>XL</option>
+                                                            <option>HUTCH</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <!-- /.box-body -->
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="col-md-2">
+                                                    <label>SERVICE</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-4" style="margin-left:-20px;margin-bottom: 10px;">
+                                                            <button onclick="ca(this.value)" id="checkAll" type="button" value="1" class="btn btn-primary">Check/Uncheck ALl</button>
+                                                        </div>
+                                                    </div>
+                                                    <?php foreach($apps as $app){ ?>
+                                                    <div class="col-md-2">
+                                                        <input id="ap" name="app" value="<?php echo $app['id_app'];?>" type="checkbox" class="minimal">
+                                                        <label><?php echo strtoupper($app['app_desc']);?></label>
+                                                    </div>
+                                                     <?php } ?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="col-md-2 col-lg-offset-2">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
                                     </form>
-
                                 </div>
                                 <!-- /.box-body -->
 
+                                <div class="box-body">
+                                    <p style="color:#446CB3">
+                                        DAILY TRAFFIC -- : [ Bulan : 05 , Tahun : 2017 ] [ SHORTCODE : All ] [ TELCO : All ] [ Service : All ]
+                                    </p>
+                                </div>
                                 <div class="box-body" style="overflow-x:auto">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">APPID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MSISDN</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SMS</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SUBJECT</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MESSAGE</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">URL</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">TELCO</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SHORTCODE</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">CHARGE</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MT TYPE</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">TRX ID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SESSION ID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">MEDIA ID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">PARTNER ID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">ACK STATUS</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">SID</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">DN TELCO</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">DN STATUS</th>
-                                                <th style="text-align: center;background-color: #4183D7;color: #fff;">DATETIME</th>
+                                                <th>Tanggal</th>
+                                                <th>MO</th>
+                                                <th>MO REG</th>
+                                                <th>MO UNREG</th>
+                                                <th>MT DELIVERED</th>
+                                                <th>MT REJECTED</th>
+                                                <th>TOTAL MT</th>
+                                                <th>PRESENTAGE</th>
+                                                <th>GROSS REV</th>
+                                                <th>NET REV</th>
                                             </tr>
                                         </thead>
+
                                         <tbody>
-                                            <?php foreach ($data as $d) { ?>
+                                            <?php 
+                                            foreach($data as $key => $val){ ?>
                                             <tr>
-                                                <td style="text-align: center">10014</td>
-                                                <td style="text-align: center"><?= $d['msisdn'] ?></td>
-                                                <td><?= $d['sms_field'] ?></td>
-                                                <td><?= $d['subject'] ?></td>
-                                                <td><?= $d['content_field'] ?></td>
-                                                <td style="text-align: center"></td>
-                                                <td style="text-align: center"><?= $d['telco'] ?></td>
-                                                <td style="text-align: center"><?= $d['shortcode'] ?></td>
-                                                <td style="text-align: center"><?= $d['cost'] ?></td>
-                                                <td style="text-align: center">1</td>
-                                                <td style="text-align: center"><?= $d['trx_id'] ?></td>
-                                                <td style="text-align: center"><a href=""><?= $d['session_id'] ?></a></td>
-                                                <td style="text-align: center">0</td>
-                                                <td style="text-align: center">0</td>
-                                                <td style="text-align: center">0</td>
-                                                <td style="text-align: center">92000029001001</td>
-                                                <td style="text-align: center"><?= $d['send_status'] ?></td>
-                                                <td style="text-align: center"><?= $d['response_code'] ?></td>
-                                                <td style="text-align: center"><?= $d['trx_date'] ?></td>
+                                                <td>
+                                                    <?php 
+                                                    $keyArr[] = $key;
+                                                    echo $key; 
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if($data[$key]['PULL_total'] == true){
+                                                    $mo = $data[$key]['PULL_total'];
+                                                    } else{
+                                                    $mo= 0;
+                                                    }
+                                                    $moArr[] = $mo;
+                                                    echo $mo;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if($data[$key]['REG;_total'] == true){
+                                                    $moReg = $data[$key]['REG;_total'];
+                                                    } else{
+                                                    $moReg= 0;
+                                                    }
+                                                    $moRegArr[] = $moReg;
+                                                    echo $moReg;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if($data[$key]['UNRE_total'] == true){
+                                                    $moUnreg = $data[$key]['UNRE_total'];
+                                                    } else{
+                                                    $moUnreg= 0;
+                                                    }
+                                                    $moUnregArr[] = $moUnreg;
+                                                    echo $moUnreg;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if($data[$key]['push']['delivered'] == true){
+                                                    $mtDeliv = $data[$key]['push']['delivered'];
+                                                    } else{
+                                                    $mtDeliv= 0;
+                                                    }
+                                                    $mtDelivArr[] = $mtDeliv;
+                                                    echo $mtDeliv;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if($data[$key]['push']['rejected'] == true){
+                                                    $mtReject = $data[$key]['push']['rejected'];
+                                                    } else{
+                                                    $mtReject= 0;
+                                                    }
+                                                    $mtRejectArr[] = $mtReject;
+                                                    echo $mtReject;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                    $totalMTTanggal = $mtDeliv + $mtReject; 
+                                                    $totalMTTanggalArr[] = $totalMTTanggal;
+                                                    echo $totalMTTanggal;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                    $persen = ($mtDeliv*100)/$totalMTTanggal;
+                                                    echo number_format($persen) .' %';
+                                                    ?>
+                                                </td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">30000</td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">10000</td>
                                             </tr>
                                             <?php } ?>
-                                        </tbody>
-                                    </table>
+                                            <tr>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">Total</td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
+                                                    <?php echo array_sum($moArr); ?>
+                                                </td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
+                                                    <?php echo array_sum($moRegArr); ?>
+                                                </td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
+                                                    <?php echo array_sum($moUnregArr); ?>
+                                                </td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
+                                                    <?php echo array_sum($mtDelivArr); ?>
+                                                </td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
+                                                    <?php echo array_sum($mtRejectArr); ?>
+                                                </td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;">
+                                                    <?php echo array_sum($totalMTTanggalArr); ?>
+                                                </td>
+                                                <td style="background-color:rgba(129, 207, 224,0.7);color: #000;"></td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">60000</td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">20000</td>
+                                            </tr>
+                                        </tbody>                                    </table>
                                 </div>
+
+                                <div id="container"></div>
+
                             </div>
                             <!-- /.box -->
                         </div>
-                        <!-- /.col md 12 -->
-
                     </div>
-                    <!-- /.row (main row) -->
+                    <!-- /.row -->
 
                 </section>
                 <!-- /.content -->
+
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
-                <strong>Copyright &copy; 2017 Mobiwin.</strong> All rights
-                reserved.
+                <strong>Copyright &copy; 2017 Mobiwin.</strong> All rights reserved.
             </footer>
 
 
@@ -557,7 +599,7 @@
         <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+                                                                $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -571,7 +613,6 @@
         <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
         <script src="../dist/js/adminlte.min.js"></script>
-        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
         <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
         <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
@@ -580,23 +621,109 @@
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
         <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": false,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false
-                });
-            });
+            function ca(val) {
+                if (val === '1') {
+                    document.getElementById('checkAll').value = '2';
+                    var x = document.getElementsByName("app");
+                    for (var i = 0; i < x.length; i++) {
+                        if (x[i].type == "checkbox") {
+                            x[i].checked = true;
+                        }
+                    }
+                } else {
+                    document.getElementById('checkAll').value = '1';
+                    var x = document.getElementsByName("app");
+                    for (var i = 0; i < x.length; i++) {
+                        if (x[i].type == "checkbox") {
+                            x[i].checked = false;
+                        }
+                    }
+                }
+            }
         </script>
+        <script>
+            Highcharts.chart('container', {
+            colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
+                    '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+                    chart: {
+                    backgroundColor: {
+                    linearGradient: {x1: 0, y1: 0, x2: 1, y2: 1},
+                            stops: [
+                            [0, '#2a2a2b'],
+                            [1, '#3e3e40']
+                            ]
+                    },
+                            style: {
+                            fontFamily: '\'Unica One\', sans-serif'
+                            },
+                            plotBorderColor: '#606063'
+                    },
+                    title: {
+                    style: {
+                    color: '#E0E0E3',
+                            textTransform: 'uppercase',
+                            fontSize: '20px'
+                    },
+                            text: 'Grafik Monthly Traffic Net Revenue'
+                    },
+                    subtitle: {
+                    text: ''
+                    },
+                    yAxis: {
+                    gridLineColor: '#707073',
+                            labels: {
+                            style: {
+                            color: '#E0E0E3'
+                            }
+                            },
+                            lineColor: '#707073',
+                            minorGridLineColor: '#505053',
+                            tickColor: '#707073',
+                            tickWidth: 1,
+                            title: {
+                            style: {
+                            color: '#A0A0A3'
+                            }
+                            },
+                            title: {
+                            text: ''
+                            }
+                    },
+                    legend: {
+                    layout: 'vertical',
+                            align: 'right',
+                            verticalAlign: 'middle'
+                    },
+                    xAxis: {
+                    gridLineColor: '#707073',
+                            labels: {
+                            style: {
+                            color: '#E0E0E3'
+                            }
+                            },
+                            lineColor: '#707073',
+                            minorGridLineColor: '#505053',
+                            tickColor: '#707073',
+                            title: {
+                            text: 'Tanggal',
+                                    style: {
+                                    color: '#fff'
+
+                                    }
+                            },
+                            categories: [<?php echo join($keyArr, ','); ?>]
+                                },
+
+                                series: [{
+                                    showInLegend: false,
+                                    data: [<?php echo join($totalMTTanggalArr, ','); ?>]
+                                }]
+                                
+                                });
+                                </script>
+
+
     </body>
 </html>

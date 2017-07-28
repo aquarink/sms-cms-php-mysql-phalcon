@@ -2,28 +2,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Partner Name</title>
+        <title>Edit Profile</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/bootstrap/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/iCheck/all.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datepicker/datepicker3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <style>
-            label{
-                text-align: center;
-            }
-            th{
-                background-color: #4183D7;
-                color: #fff;
-            }
-        </style>
+        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
+        <link rel="stylesheet" href="../plugins/iCheck/all.css">
+        <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
@@ -31,7 +25,7 @@
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index.html" class="logo">
+                <a href="" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>CMS</b></span>
                     <!-- logo for regular state and mobile devices -->
@@ -50,16 +44,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  {{ pic }}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/edituser', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -75,7 +69,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li class="treeview">
+                        <li class="active treeview">
                             <a href="#">
                                 <i class="fa fa-user"></i> <span>User</span>
                                 <span class="pull-right-container">
@@ -83,11 +77,11 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../user/adduser"><i class="fa fa-pencil-square-o"></i> Add New User</a></li>
-                                <li><a href="../user/manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
+                                <li class="active"><a href="adduser"><i class="fa fa-pencil-square-o"></i> Add New User</a></li>
+                                <li><a href="manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
                             </ul>
                         </li>
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-dashboard"></i>
                                 <span>Report</span>
@@ -96,24 +90,24 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
-                                <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
-                                <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
-                                <li class="active"><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
-                                <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
-                                <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
-                                <li><a href="molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
-                                <li><a href="mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
-                                <li><a href="dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
-                                <li><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
-                                <li><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
-                                <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
-                                <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
-                                <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
-                                <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
-                                <li><a href="partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
-                                <li><a href="profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
-                                <li><a href="pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
+                                <li><a href="../report/application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
+                                <li><a href="../report/keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
+                                <li><a href="../report/regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
+                                <li><a href="../report/partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
+                                <li><a href="../report/medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
+                                <li><a href="../report/listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
+                                <li><a href="../report/molog"><i class="fa fa-circle-o"></i> MO LOG</a></li>
+                                <li><a href="../report/mtlog"><i class="fa fa-circle-o"></i> MT LOG</a></li>
+                                <li><a href="../report/dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
+                                <li><a href="../report/dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
+                                <li><a href="../report/moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
+                                <li><a href="../report/smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
+                                <li><a href="../report/dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
+                                <li><a href="../report/monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
+                                <li><a href="../report/topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
+                                <li><a href="../report/partnertraffic"><i class="fa fa-circle-o"></i> PARTNER TRAFFIC</a></li>
+                                <li><a href="../report/profitloss"><i class="fa fa-circle-o"></i> PROFIT LOSS</a></li>
+                                <li><a href="../report/pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -326,7 +320,9 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>PARTNER NAME</h1>
+                    <h1>
+                        Edit Profile
+                    </h1>
                 </section>
 
                 <!-- Main content -->
@@ -336,91 +332,58 @@
                             <!-- AREA CHART -->
                             <div class="box box-primary">
                                 <div class="box-body">
-                                    <form class="form-horizontal">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>Partner Like</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="text" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-info btn-flat">Go!</button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                    <?php
+                                    if(isset($_GET['msg'])) {
+                                    echo '<b style=color:red>'.$_GET['msg'].'</b>';
+                                    }
+                                    ?>
+                                    <form class="form-horizontal" method="post" action="../user/updateuser">
+                                        {% for d in data %}
+                                        <div class="box-body">
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Nama / PIC</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="hidden" name="id" value="{{ d['id_user'] }}">
+                                                    <input type="text" class="form-control" name="nama" placeholder="Name of PIC" value="{{ d['name'] }}">
                                                 </div>
                                             </div>
+
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Username</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Username" value="{{ d['username'] }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Password</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="***********">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-offset-2">
+                                                <button type="submit" class="btn btn-warning" style="margin-left:5px;">Update</button>
+                                                <button type="reset" class="btn btn-info" style="margin-left:5px;">Cancel</button>
+                                            </div>
                                         </div>
+                                        {% endfor %}
                                     </form>
-                                </div>
-                                <!-- /.box-body -->
 
-                                <div class="box-body" style="overflow-x:auto">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th style="text-align: center">PARTNER ID</th>
-                                                <th style="text-align: center">PARTNER</th>
-                                                <th style="text-align: center">ENTRY DATE</th>
-                                                <th style="text-align: center">EDIT</th>
-                                                <th style="text-align: center">DELETE</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <?php foreach ($data as $d) { ?>
-                                            <tr>
-                                                <td style="text-align: center"><?= $d['id'] ?></td>
-                                                <td style="text-align: center"><?= $d['name_partner'] ?></td>
-                                                <td style="text-align: center"><?= $d['create_partner'] ?></td>
-                                                <td style="text-align: center"><a href="<?= $this->config->base_url ?>report/editPartner?id=<?= $d['id'] ?>">EDIT</a></td>
-                                                <td style="text-align: center"><a href="deletePartner/<?= $d['id'] ?>">DELETE</a></td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--body box-->
-                            </div>
-                            <!-- box box-primary -->
-
-                            <div class="box box-primary">
-                                <div class="box-body">
-                                    <h3>EDIT PARTNER</h3>
-                                    <form class="form-horizontal" style="margin-top:25px;" method="post">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>PARTNER</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <input type="text" class="form-control" name="name_partner" value="<?= $detail['name_partner'] ?>"  placeholder="PARTNER">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="col-md-2 col-lg-offset-2">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                <button type="reset" class="btn btn-primary">Reset</button>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
+                            <!-- /.box -->
                         </div>
+
                     </div>
                     <!-- /.row -->
 
                 </section>
                 <!-- /.content -->
-
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -433,51 +396,31 @@
         <!-- ./wrapper -->
 
         <!-- jQuery 3.1.1 -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
+        <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="<?php echo $this->config->base_url; ?>public/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
         <!-- Morris.js charts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <!-- daterangepicker -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <!-- Slimscroll -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/fastclick/fastclick.js"></script>
+        <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="<?php echo $this->config->base_url; ?>public/dist/js/adminlte.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/iCheck/icheck.min.js"></script>
+        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
-        <!-- CK Editor -->
-        <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-        <script src="https://code.highcharts.com/highcharts.src.js"></script>
-        <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": false,
-                    "info": true,
-                    "autoWidth": false
-                });
-            });
-        </script>
+        <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
     </body>
 </html>
+

@@ -2,6 +2,7 @@
 
 use Phalcon\Http\Request;
 use Phalcon\Http\Response;
+use Phalcon\Http\Dispatcher;
 use Phalcon\Mvc\Model\Query;
 
 class IndexController extends ControllerBase {
@@ -22,19 +23,12 @@ class IndexController extends ControllerBase {
                         $this->session->set('name', $userData['name']);
                         $this->session->set('page', $userData['page']);
 
-                        $signinLog = new TbSigninUser();
-                        $signinLog->assign(array(
-                            'id_user' => $userData['id_user'],
-                            'name_user' => $userData['name'],
-                            'ip_user' => $request->getClientAddress(),
-                            'sign_date' => $now,
-                                )
-                        );
-                        if ($signinLog->save()) {
-                            echo date('Y-m-d h:i:s') . " : Insert report push Ok \n";
+                        $saveQuery = $this->dblog->query("INSERT INTO tb_signin_user (id_user,name_user,ip_user,sign_date) VALUES('".$userData['id_user']."','".$userData['name']."','".$request->getClientAddress()."','".$now."')");
+                        if($saveQuery) {
+                            $this->response->redirect("home");
+                        } else {
+                            echo 'gagal query';
                         }
-
-                        $this->response->redirect("home");
                     }
                 } else {
                     $this->response->redirect("index?msg=Username dan Password not register");

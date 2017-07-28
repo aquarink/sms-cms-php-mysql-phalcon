@@ -2,14 +2,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Reg Keyword</title>
+        <title>SMS Subscriber</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
         <link rel="stylesheet" href="../plugins/iCheck/all.css">
         <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
         <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
@@ -21,12 +25,16 @@
             th{
                 background-color: #4183D7;
                 color: #fff;
+                text-align: center;
+            }
+            td{
+                text-align: center;
             }
         </style>
-
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
+
         <div class="wrapper">
 
             <header class="main-header">
@@ -50,16 +58,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -98,7 +106,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="application"><i class="fa fa-circle-o"></i> APPLICATION</a></li>
                                 <li><a href="keyword"><i class="fa fa-circle-o"></i> KEYWORD</a></li>
-                                <li class="active"><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
+                                <li><a href="regkeyword"><i class="fa fa-circle-o"></i> REG KEYWORD</a></li>
                                 <li><a href="partnername"><i class="fa fa-circle-o"></i> PARTNER NAME</a></li>
                                 <li><a href="medianame"><i class="fa fa-circle-o"></i> MEDIA NAME</a></li>
                                 <li><a href="listcharging"><i class="fa fa-circle-o"></i> LIST CHARGING</a></li>
@@ -107,7 +115,7 @@
                                 <li><a href="dnlog"><i class="fa fa-circle-o"></i> DN LOG</a></li>
                                 <li><a href="dailymt"><i class="fa fa-circle-o"></i> DAILY MT SMS</a></li>
                                 <li><a href="moreg"><i class="fa fa-circle-o"></i> MO REG</a></li>
-                                <li><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
+                                <li class="active"><a href="smssubscriber"><i class="fa fa-circle-o"></i> SMS SUBSCRIBER</a></li>
                                 <li><a href="dailytraffic"><i class="fa fa-circle-o"></i> DAILY TRAFFIC</a></li>
                                 <li><a href="monthlytraffic"><i class="fa fa-circle-o"></i> MONTHLY TRAFFIC</a></li>
                                 <li><a href="topservice"><i class="fa fa-circle-o"></i> TOP SERVICE</a></li>
@@ -326,7 +334,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>REG KEYWORD</h1>
+                    <h1>SMS Subscriber</h1>
                 </section>
 
                 <!-- Main content -->
@@ -337,88 +345,21 @@
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <form class="form-horizontal">
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="col-md-2">
-                                                    <label>Keyword Like</label>
+                                                    <label>SHORTCODE</label>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
-                                                        <div class="input-group input-group-sm">
-                                                            <input type="text" class="form-control">
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-info btn-flat">Go!</button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- /.box-body -->
-
-                                <div class="box-body" style="overflow-x:auto">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th style="text-align: center">KEYWORD</th>
-                                                <th style="text-align: center">TELCO</th>
-                                                <th style="text-align: center">SHORTCODE</th>
-                                                <th style="text-align: center">APPID</th>
-                                                <th style="text-align: center">ENTRY DATE</th>
-                                                <th style="text-align: center">EDIT</th>
-                                                <th style="text-align: center">DELETE</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr>
-                                                <td style="text-align: center">hangout</td>
-                                                <td style="text-align: center">xl</td>
-                                                <td style="text-align: center">95000</td>
-                                                <td style="text-align: center">10019</td>
-                                                <td style="text-align: center">2017-06-02 22:47:59</td>
-                                                <td style="text-align: center"><a href="">EDIT</a></td>
-                                                <td style="text-align: center"><a href="">DELETE</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">hangout</td>
-                                                <td style="text-align: center">xl</td>
-                                                <td style="text-align: center">95000</td>
-                                                <td style="text-align: center">10019</td>
-                                                <td style="text-align: center">2017-06-02 22:47:59</td>
-                                                <td style="text-align: center"><a href="">EDIT</a></td>
-                                                <td style="text-align: center"><a href="">DELETE</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: center">hangout</td>
-                                                <td style="text-align: center">xl</td>
-                                                <td style="text-align: center">95000</td>
-                                                <td style="text-align: center">10019</td>
-                                                <td style="text-align: center">2017-06-02 22:47:59</td>
-                                                <td style="text-align: center"><a href="">EDIT</a></td>
-                                                <td style="text-align: center"><a href="">DELETE</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!--body box-->
-                            </div>
-                            <!-- box box-primary -->
-
-                            <div class="box box-primary">
-                                <div class="box-body">
-                                    <h3>ADD KEYWORD</h3>
-                                    <form class="form-horizontal" style="margin-top:25px;">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>KEYWORD</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <input type="text" class="form-control"  placeholder="KEYWORD">
+                                                        <select class="form-control">
+                                                            <option>All</option>
+                                                            <option>97979</option>
+                                                            <option>99999</option>
+                                                            <option>11111</option>
+                                                            <option>33333</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -432,40 +373,11 @@
                                                 <div class="col-md-10">
                                                     <div class="col-md-4">
                                                         <select class="form-control">
+                                                            <option>All</option>
                                                             <option>TELKOMSEL</option>
+                                                            <option>INDOSAT</option>
                                                             <option>XL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>SHORTCODE</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>95000</option>
-                                                            <option>94878</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="col-md-2">
-                                                    <label>APPID</label>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="col-md-4">
-                                                        <select class="form-control">
-                                                            <option>10013</option>
-                                                            <option>10100</option>
+                                                            <option>HUTCH</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -474,14 +386,80 @@
 
                                         <div class="col-md-12">
                                             <div class="col-md-2 col-lg-offset-2">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                <button type="reset" class="btn btn-primary">Reset</button>
+                                                <button type="submit" class="btn btn-primary" style="margin-left:5px;">Submit</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <!-- /.box-body -->
+
+                                <div class="box-body">
+                                    <p style="color:#446CB3">
+                                        SUBSCRIBER : [ SHORTCODE : All ] [ TELCO : All ]
+                                    </p>
+                                </div>
+
+                                <div class="box-body" style="overflow-x:auto">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>SERVICE</th>
+                                                <th>DESCRIPTION</th>
+                                                <th>MEMBER AKTIF</th>
+                                                <th>MEMBER NON AKTIF</th>
+                                                <th>TOTAL MEMBER</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php 
+                                            foreach($data as $key => $val){ ?>
+                                            <tr>
+                                                <td><?php echo $data[$key]['id_app']; ?></td>
+                                                <td><?php echo $key;?></td>
+                                                <td>
+                                                    <?php
+                                                    if($data[$key]['reg'] == true){
+                                                        $reg = $data[$key]['reg'];
+                                                    } else{
+                                                        $reg= 0;
+                                                    }
+                                                    $regArr[] = $reg;
+                                                    echo $reg;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    if($data[$key]['unreg'] == true){
+                                                        $unreg = $data[$key]['unreg'];
+                                                    } else{
+                                                        $unreg = 0;
+                                                    }
+                                                    $unregArr[] = $unreg;
+                                                    echo $unreg;
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    $sumRegUnreg= $reg + $unreg; 
+                                                    $totalArr[] = $sumRegUnreg;
+                                                    echo $sumRegUnreg;
+                                                    ?>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                            <tr>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;"><?php $nbsp; ?></td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;">TOTAL</td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;"><?php echo array_sum($regArr); ?></td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;"><?php echo array_sum($unregArr); ?></td>
+                                                <td style="background-color:rgba(68,108,179,0.7);color: #fff;"><?php echo array_sum($totalArr); ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+                            <!-- /.box -->
                         </div>
                     </div>
                     <!-- /.row -->
@@ -506,7 +484,7 @@
         <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
-            $.widget.bridge('uibutton', $.ui.button);
+$.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
         <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -530,22 +508,26 @@
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="https://code.highcharts.com/highcharts.src.js"></script>
         <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
-            $(function () {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false
-                });
-            });
+$(function () {
+    $('#datepicker').datepicker({
+        autoclose: true
+    });
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
+    });
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red'
+    });
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_flat-green',
+        radioClass: 'iradio_flat-green'
+    });
+});
         </script>
     </body>
 </html>

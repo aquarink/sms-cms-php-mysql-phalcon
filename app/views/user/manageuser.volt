@@ -58,16 +58,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  {{ pic }}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="logout" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -364,13 +364,13 @@
                                                     <td style="vertical-align:middle;">{{ d['username'] }}</td>
                                                     <td style="max-width: 600px;word-wrap:break-word">{{ d['page'] }}</td>
                                                     <td>
-                                                        <button type="submit" class="btn btn-primary" style="width:78px;">
+                                                        <a href="../user/edituser?id={{ d['id_user'] }}" class="btn btn-primary" style="width:78px;">
                                                             <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right: 3px;"></i>Edit
-                                                        </button>
+                                                        </a>
 
-                                                        <button type="submit" class="btn btn-danger" style="width:78px;">
+                                                        <a href="../user/deleteuser?id={{ d['id_user'] }}" class="btn btn-danger" style="width:78px;">
                                                             <i class="fa fa-trash-o" aria-hidden="true" style="margin-right: 3px;"></i>Delete
-                                                        </button>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 {% endfor %}

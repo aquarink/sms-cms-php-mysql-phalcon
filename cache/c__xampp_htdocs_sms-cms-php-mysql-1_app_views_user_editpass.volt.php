@@ -2,32 +2,30 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Add New Text</title>
+        <title>Edit Profile</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/iCheck/all.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.css">
-        <link rel="stylesheet" href="<?php echo $this->config->base_url; ?>public/plugins/datepicker/datepicker3.css">
+        <link rel="stylesheet" href="../plugins/iCheck/all.css">
+        <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
 
     <body  class="hold-transition skin-blue sidebar-mini">
-
-
         <div class="wrapper">
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index.html" class="logo">
+                <a href="" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>CMS</b></span>
                     <!-- logo for regular state and mobile devices -->
@@ -46,16 +44,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  <?= $pic ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                            <?php echo $this->tag->linkTo(['user/edituser', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                     </li>
                                 </ul>
@@ -71,7 +69,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li class="treeview">
+                        <li class="active treeview">
                             <a href="#">
                                 <i class="fa fa-user"></i> <span>User</span>
                                 <span class="pull-right-container">
@@ -79,8 +77,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../user/adduser"><i class="fa fa-pencil-square-o"></i> Add New User</a></li>
-                                <li><a href="../user/manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
+                                <li class="active"><a href="adduser"><i class="fa fa-pencil-square-o"></i> Add New User</a></li>
+                                <li><a href="manageuser"><i class="fa fa-users"></i> Manage Users</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -112,7 +110,7 @@
                                 <li><a href="../report/pushsms"><i class="fa fa-circle-o"></i> PUSH SMS</a></li>
                             </ul>
                         </li>
-                        <li class="active treeview">
+                        <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-book"></i> <span>CMS TEXT</span>
                                 <span class="pull-right-container">
@@ -120,15 +118,15 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="active treeview">
+                                <li class="treeview">
                                     <a href="#"><i class="fa fa-circle-o"></i> Content Info
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li class="active"><a href="addtext"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
-                                        <li><a href="managetext"><i class="fa fa-list"></i> Manage Content</a></li>
+                                        <li><a href="../text/addtext"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
+                                        <li><a href="../text/managetext"><i class="fa fa-list"></i> Manage Content</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -138,8 +136,8 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="addquiz"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
-                                        <li><a href="managequiz"><i class="fa fa-list"></i> Manage Content</a></li>
+                                        <li><a href="../text/addquiz"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
+                                        <li><a href="../text/managequiz"><i class="fa fa-list"></i> Manage Content</a></li>
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -149,8 +147,8 @@
                                         </span>
                                     </a>
                                     <ul class="treeview-menu">
-                                        <li><a href="addwap"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
-                                        <li><a href="managewap"><i class="fa fa-list"></i> Manage Content</a></li>
+                                        <li><a href="../text/addwap"><i class="fa fa-pencil-square-o"></i> Add New</a></li>
+                                        <li><a href="../text/managewap"><i class="fa fa-list"></i> Manage Content</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -323,7 +321,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Add New Text
+                        Edit Profile
                     </h1>
                 </section>
 
@@ -334,77 +332,53 @@
                             <!-- AREA CHART -->
                             <div class="box box-primary">
                                 <div class="box-body">
-                                    <form class="form-horizontal" method="post">
+                                    <?php
+                                    if(isset($_GET['msg'])) {
+                                    echo '<b style=color:red>'.$_GET['msg'].'</b>';
+                                    }
+                                    ?>
+                                    <form class="form-horizontal" method="post" action="../user/updateuser">
+                                        <?php foreach ($data as $d) { ?>
+                                        <div class="box-body">
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Nama / PIC</label>
 
-                                        <div class="form-group" style="margin-top:15px;">
-                                            <label class="col-sm-2 col-md-offset-2">Service</label>
-
-                                            <div class="col-sm-5">
-                                                <select class="form-control" name="id_app">
-                                                    <?php foreach ($data as $d) { ?>
-                                                    <option value="<?= $d['id_app'] ?>"><?= $d['id_app'] ?> - <?= $d['app_desc'] ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">Content</label>
-
-                                            <div class="col-sm-5">
-                                                <textarea class="form-control" name="content_field" rows="3" placeholder="Content ..."></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">Category</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" name="category" class="form-control" placeholder="Category">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">Character Count</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" placeholder="160" disabled="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">Publish Date</label>
-
-                                            <div class="col-sm-5">
-                                                <!-- Date -->
-                                                <div class="input-group date">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input type="text" name="publish_date" class="form-control pull-right" id="datepicker" placeholder="Date">
+                                                <div class="col-sm-10">
+                                                    <input type="hidden" name="id" value="<?= $d['id_user'] ?>">
+                                                    <input type="text" class="form-control" name="nama" placeholder="Name of PIC" value="<?= $d['name'] ?>">
                                                 </div>
-                                                <!-- /.input group -->
+                                            </div>
+
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Username</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="username" id="inputEmail3" placeholder="Username" value="<?= $d['username'] ?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group <?php if(isset($_GET['err'])) {echo 'has-error';}?>">
+                                                <label class="col-sm-2">Password</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="***********">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-offset-2">
+                                                <button type="submit" class="btn btn-warning" style="margin-left:5px;">Update</button>
+                                                <button type="reset" class="btn btn-info" style="margin-left:5px;">Cancel</button>
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 col-md-offset-2">Publish Seq</label>
-
-                                            <div class="col-sm-5">
-                                                <input type="text" class="form-control" name="content_number" placeholder="Publish Seq" >
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-5 col-md-offset-4">
-                                            <button type="submit" class="btn btn-info">SUBMIT</button>
-                                        </div>
+                                        <?php } ?>
                                     </form>
+
                                 </div>
                                 <!-- /.box-body -->
                             </div>
                             <!-- /.box -->
                         </div>
-                        <!-- /.col md 12 -->
+
                     </div>
                     <!-- /.row -->
 
@@ -412,8 +386,6 @@
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
-
-
             <footer class="main-footer">
                 <strong>Copyright &copy; 2017 Mobiwin.</strong> All rights
                 reserved.
@@ -424,40 +396,31 @@
         <!-- ./wrapper -->
 
         <!-- jQuery 3.1.1 -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQuery/jquery-3.1.1.min.js"></script>
+        <script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
 
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <script src="../plugins/jQueryUI/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="<?php echo $this->config->base_url; ?>public/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
         <!-- Morris.js charts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
         <!-- daterangepicker -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
         <!-- Slimscroll -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/fastclick/fastclick.js"></script>
+        <script src="../plugins/fastclick/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="<?php echo $this->config->base_url; ?>public/dist/js/adminlte.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/iCheck/icheck.min.js"></script>
+        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="../plugins/iCheck/icheck.min.js"></script>
         <!-- DataTables -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datatables/dataTables.bootstrap.min.js"></script>
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
         <!-- bootstrap datepicker -->
-        <script src="<?php echo $this->config->base_url; ?>public/plugins/datepicker/bootstrap-datepicker.js"></script>
-        <!-- CK Editor -->
-        <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-        <script>
-            $(function () {
-                $('#datepicker').datepicker({
-                    autoclose: true
-                });
-            });
-        </script>
-
+        <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
     </body>
 </html>
+

@@ -50,17 +50,16 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs"><i class="fa fa-user"></i>  Admin</span>
+                                    <span class="hidden-xs"><i class="fa fa-user"></i>  {{pic}}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Change Password</a>
+                                            <?php echo $this->tag->linkTo(['user/editpass?id='.$idsess, 'Change Password', 'class'=>'btn btn-default btn-flat']) ?>
                                         </div>
                                         <div class="pull-right">
                                             <?php echo $this->tag->linkTo(['user/logout', 'Sign out', 'class'=>'btn btn-default btn-flat']) ?>
-                                            <!--<a href="logout" class="btn btn-default btn-flat">Sign out</a>-->
                                         </div>
                                     </li>
                                 </ul>
@@ -360,11 +359,11 @@
                                 <!-- /.box-body -->
 
                                 <div class="box-body" style="overflow-x:auto">
-                                    <table id="example2" class="table table-bordered table-hover">
+                                    <table id="example2" class="table table-bordered table-hover" style="font-size: 12px">
                                         <thead>
                                             <tr>
                                                 <th style="text-align: center">APPID</th>
-                                                <th style="text-align: center">DESCRIPTION</th>
+                                                <th style="text-align: center">DESC</th>
                                                 <th style="text-align: center">PUSH SERVICE</th>
                                                 <th style="text-align: center">PUSH TIME</th>
                                                 <th style="text-align: center">PUSH DAY</th>
@@ -395,8 +394,8 @@
                                                 <td style="text-align:center;">{{ d['pic'] }}</td>
                                                 <td>{{ d['app_create'] }}</td>
                                                 <td style="text-align:center;">{{ d['config_status'] }}</td>
-                                                <td style="text-align:center;"><a href="{{ config.base_url }}report/editapp?id={{ d['id_app'] }}">EDIT</a></td>
-                                                <td style="text-align:center;"><a href="deleteApp/{{ d['id_app'] }}">DELETE</a></td>
+                                                <td style="text-align:center;"><a href="{{ config.base_url }}report/editapp?id={{ d['id_app'] }}"><i class="fa fa-pencil"></i></a></td>
+                                                <td style="text-align:center;"><a href="deleteApp/{{ d['id_app'] }}"><i class="fa fa-trash"></i></a></td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>

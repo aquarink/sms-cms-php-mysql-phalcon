@@ -9,6 +9,11 @@ class ReportController extends \Phalcon\Mvc\Controller {
     }
 
     public function applicationAction() {
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
+
         $app = new TbAppConfig();
         $appdata = $app::find()->toArray();
         $this->view->setVar("data", $appdata);
@@ -117,6 +122,11 @@ class ReportController extends \Phalcon\Mvc\Controller {
     }
 
     public function keywordAction() {
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
+
         $keyword = new TbKeyword();
         $app = new TbAppConfig();
         $keywordData = $keyword::find()->toArray();
@@ -223,11 +233,18 @@ class ReportController extends \Phalcon\Mvc\Controller {
     }
 
     public function regkeywordAction() {
-        
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
     }
 
 //    PARTNER--------------------------------------------
     public function partnernameAction() {
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
 
         $partner = new TbPartner();
         $partnerData = $partner::find()->toArray();
@@ -422,45 +439,67 @@ class ReportController extends \Phalcon\Mvc\Controller {
     }
 
     public function mologAction() {
-	$today = date("Y_m_d");
-	$query = "SELECT * FROM tb_mo_$today ORDER BY `session_date` DESC LIMIT 20";
+        $today = date("Y_m_d");
+        $query = "SELECT * FROM tb_mo_$today ORDER BY `session_date` DESC LIMIT 20";
         $result = $this->dblog->query($query);
         $moData = $result->fetchAll();
         $this->view->setVar("data", $moData);
     }
 
     public function mtlogAction() {
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
+
         $today = date("Y_m_d");
-	$query = "SELECT * FROM tb_push_$today ORDER BY `session_date` DESC LIMIT 20";
-	$result = $this->dblog->query($query);
-	$mtData= $result->fetchAll();
+        $query = "SELECT * FROM tb_push_$today ORDER BY `session_date` DESC LIMIT 20";
+        $result = $this->dblog->query($query);
+        $mtData = $result->fetchAll();
         $this->view->setVar("data", $mtData);
     }
 
     public function DNLogAction() {
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
+
         $today = date("Y_m_d");
-	$query = "SELECT * FROM tb_dr_$today ORDER BY `session_date` DESC LIMIT 20";
-	$result = $this->dblog->query($query);
-	$dndata= $result->fetchAll();
+        $query = "SELECT * FROM tb_dr_$today ORDER BY `session_date` DESC LIMIT 20";
+        $result = $this->dblog->query($query);
+        $dndata = $result->fetchAll();
         $this->view->setVar("data", $dndata);
     }
 
     public function dailymtAction() {
-        
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
     }
 
     public function moregAction() {
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
         
     }
 
     public function smssubscriberAction() {
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
+        
         error_reporting(0);
         $member = new TbMembers();
         $query = "SELECT COUNT(c.`id_app`) AS jumlah,  c.`id_app`, c.`app_desc`, m.`reg_types` FROM tb_keyword AS k
         LEFT JOIN tb_app_config AS c
         ON k.`id_app` = c.`id_app`
         LEFT JOIN tb_members AS m
-        ON k.`keyword` = m.`app`
+        ON k.`keyword` = m.`keyword`
         WHERE m.`reg_types` != ''
         GROUP BY c.`app_desc`, m.`reg_types`
         ORDER BY c.`id_app`";
@@ -475,20 +514,31 @@ class ReportController extends \Phalcon\Mvc\Controller {
     }
 
     public function dailytrafficAction() {
-	error_reporting(0);
+        if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
+        
+        $appQuery = "SELECT id_app,app_desc FROM tb_app_config";
+        $resQuery = $this->db->query($appQuery);
+        $this->view->setVar("apps", $resQuery->fetchAll());
+        
+        
+        
+        error_reporting(0);
         date_default_timezone_set('Asia/Jakarta');
 
         $thisMonth = date("Y-m");
 //        $this->view->disable();
-        
+
         $awalBulan = date('Y-m-01');
         $tanggal = date('d');
-        $today = date('Y-m-'. $tanggal );
-        
+        $today = date('Y-m-' . $tanggal);
+
         $query = "SELECT *, SUBSTRING(SUBJECT, 1, 4) AS sub, SUM(total) total_c FROM tb_report_push
             WHERE (report_date BETWEEN '$awalBulan' AND '$today')
         GROUP BY DAY(report_date), sub, stat";
-        
+
         $result = $this->db->query($query);
         $dataArr = $result->fetchAll();
 //            print_r($dataArr);
@@ -508,26 +558,45 @@ class ReportController extends \Phalcon\Mvc\Controller {
 //            $datas[$val['app_desc']]['id_app'] = $val['id_app'];
         }
         $this->view->setVar("data", $datas);
-        
     }
 
     public function monthlytrafficAction() {
+         if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
         
     }
 
     public function topserviceAction() {
+         if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
         
     }
 
     public function partnertrafficAction() {
+         if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
         
     }
 
     public function profitlossAction() {
+         if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
         
     }
 
     public function pushsmsAction() {
+         if ($this->session->has("id_user")) {
+            $this->view->setVar("pic", $this->session->get("name"));
+            $this->view->setVar("idsess", $this->session->get("id_user"));
+        }
         
     }
 
